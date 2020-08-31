@@ -1,0 +1,43 @@
+{
+  "name": "boilerplate-cra-nodejs",
+  "description": "A website boilerplate that uses create-react-app and a custom Node API",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "node server/app.js",
+    "build": "cd client/ && npm install && npm run build",
+    "dev": "run-p dev:**",
+    "dev:server": "nodemon server/app.js",
+    "dev:app": "cd client/ && npm start"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "debug": "^2.6.9",
+    "express": "^4.17.1",
+    "http-errors": "^1.6.3",
+    "morgan": "^1.9.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mars/heroku-cra-node.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "create-react-app",
+    "react"
+  ],
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "npm-run-all": "^4.1.5"
+  },
+  "engines": {
+    "node": "14.7.0",
+    "npm": "6.14.7"
+  },
+  "contributors": [
+    "Shinell Manwaring (https://shinellmanwaring.com/)",
+    "Ayarza Manwaring (https://ayarzamanwaring.com/)"
+  ],
+  "license": "MIT"
+}

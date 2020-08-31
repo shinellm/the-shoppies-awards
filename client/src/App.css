@@ -1,0 +1,76 @@
+html, body {
+  width: 100vw;
+  height: 100vh;
+}
+
+#root {
+  height: 100%;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.testForm div label {
+  margin-right: 8px;
+}
+
+.testForm div input {
+  margin-right: 4px;
+}
+
+.newPage {
+  display: flex;
+  justify-content: center;
+}
+
+.notFound {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.notFound p {
+  font-size: calc(10px + 2vmin);
+}
+
+.notFound img {
+  border-radius: 20%;
+  width: calc(80vmin);
+}
