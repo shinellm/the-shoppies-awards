@@ -1,7 +1,8 @@
 {
-  "name": "boilerplate-cra-nodejs",
-  "description": "A website boilerplate that uses create-react-app and a custom Node API",
+  "name": "the-shoppies-awards",
+  "description": "A webpage that can search OMDB for movies, and allows users to save their favorite films they feel should be up for nomination",
   "version": "0.0.0",
+  "private": true,
   "scripts": {
     "start": "node server/app.js",
     "build": "cd client/ && npm install && npm run build",
@@ -19,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mars/heroku-cra-node.git"
+    "url": "https://github.com/shinellm/the-shoppies-awards.git"
   },
   "keywords": [
     "node",
@@ -35,9 +36,5 @@
     "node": "14.7.0",
     "npm": "6.14.7"
   },
-  "contributors": [
-    "Shinell Manwaring (https://shinellmanwaring.com/)",
-    "Ayarza Manwaring (https://ayarzamanwaring.com/)"
-  ],
-  "license": "MIT"
+  "author": "Shinell Manwaring (https://shinellmanwaring.com/)"
 }
