@@ -239,7 +239,11 @@ export default class Vote extends Component {
                             <Button variant="light" onClick={() => this.onShowMovieDetails(false)}>
                                 Close
                             </Button>
-                            {this.setMovieCardButton(this.state.selectedMovieDetails)}
+                            {this.setMovieCardButton(this.state.selectedMovieDetails) === true ? 
+                                <Button type="button" variant="secondary" disabled>Nominated</Button> 
+                                :
+                                <Button type="button" variant="primary" onClick={() => this.onNominateMovie(this.state.selectedMovie)}>Nominate Movie</Button>
+                            }
                         </Modal.Footer>
                     </Modal>
                 }
