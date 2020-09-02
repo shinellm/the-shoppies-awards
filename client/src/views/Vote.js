@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { Breadcrumb, Card, Form, Row, Col, Button, Modal } from 'react-bootstrap';
+import { FaTimes } from "react-icons/fa";
 import axios from "axios";
 
 export default class Vote extends Component {
     constructor() {
         super();
         this.state = {
-            searchTitle: "",
+            movieTitle: "",
+            searchedTitle: "",
             movies: [],
+            noResultsFound: false,
             showMovieDetails: false,
             selectedMovie: {},
             selectedMovieDetails: {},
@@ -15,8 +18,10 @@ export default class Vote extends Component {
         };
 
         this.onPostChange = this.onPostChange.bind(this);
+        this.onNoResultsFound = this.onNoResultsFound.bind(this);
         this.onNominateMovie = this.onNominateMovie.bind(this);
         this.onShowMovieDetails = this.onShowMovieDetails.bind(this);
+        this.onRemoveNominatedMovie = this.onRemoveNominatedMovie.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSearchMovieDetails = this.handleSearchMovieDetails.bind(this);
         this.createNominationCard = this.createNominationCard.bind(this);
@@ -26,7 +31,11 @@ export default class Vote extends Component {
     }
 
     onPostChange(event) {
-        this.setState({ searchTitle: event.target.value });
+        this.setState({ movieTitle: event.target.value.trim() });
+    }
+
+    onNoResultsFound(value) {
+        this.setState({ noResultsFound: value });
     }
 
     onNominateMovie(movie) {
@@ -37,6 +46,20 @@ export default class Vote extends Component {
 
     onShowMovieDetails(value) {
         this.setState({ showMovieDetails: value});
+    }
+
+    onRemoveNominatedMovie(nomination) {
+        let nominations = this.state.personalNominations;
+        console.log('nominated: ', nominations)
+        nominations.map( (nominated, index) => {
+            if (nominated.imdbID === nomination.imdbID) {
+                nominations.splice(index, 1);
+                return;
+            }
+            console.log(nominated)
+        })
+        console.log('remove: ',nomination,'nomination removed: ', nominations)
+        this.setState({ personalNominations: nominations });
     }
 
     // /*
@@ -78,27 +101,46 @@ export default class Vote extends Component {
     async handleSubmit(event) {
         event.preventDefault();
 
-        const response = await axios.get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&s=${this.state.searchTitle}&type=movie&page=1&r=json`);
-        if (response.status !== 200) throw Error(response.message);
-        const movieData = response.data;
+        await axios.get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&s=${this.state.movieTitle}&type=movie&page=1&r=json`)
+        .then(res => {
+            const movieData = res.data;
+            console.log('reponse', res);
+            console.log('data', movieData);
 
-        console.log('reponse', response);
-        console.log('data', movieData);
-        console.log('movies', movieData.Search);
-        
-        this.setState({ movies: movieData.Search });
+            this.setState({ searchedTitle: this.state.movieTitle });
+
+            if (movieData.Response === "False") {
+                this.onNoResultsFound(true);
+            }
+            else {
+                console.log('movies', movieData.Search);
+                this.onNoResultsFound(false);
+                this.setState({ movies: movieData.Search });
+            }
+        })
+        .catch(err => {
+            throw Error(err.message)
+        })
     };
 
     async handleSearchMovieDetails(id) {
-        const response = await axios.get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&i=${id}&type=movie&plot=full&r=json`);
-        if (response.status !== 200) throw Error(response.message);
-        const movieData = response.data;
+        await axios.get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&i=${id}&type=movie&plot=full&r=json`)
+        .then(res => {
+            const movieData = res.data;
+            console.log('reponse', res);
+            console.log('Movie Details', movieData);
 
-        console.log('reponse', response);
-        console.log('Movie Details', movieData);
-        
-        this.setState({ selectedMovieDetails: movieData });
-        this.onShowMovieDetails(true);
+            if (movieData.Response === "False") {
+                this.onNoResultsFound(true);
+            }
+            else {
+                this.onShowMovieDetails(true);
+                this.setState({ selectedMovieDetails: movieData });
+            }
+        })
+        .catch(err => {
+            throw Error(err.message)
+        })
     };
 
     createNominationCard(nomination) {
@@ -106,7 +148,13 @@ export default class Vote extends Component {
             <Col key={`nominations-${nomination.imdbID}`} lg={2} md={3} sm={6} xs={12}>
                 <Card className="nomination-card">
                     <div className="cover">
-                        <Card.Img className="nomination-image" src={nomination.Poster}/>
+                            <Button className="remove-nomination" variant="light" onClick={() => this.onRemoveNominatedMovie(nomination)}>
+                                {<FaTimes />}
+                            </Button>
+                            <div className="cover-image">
+                                <div className="nomination-image-overlay"></div>
+                                <Card.Img className="nomination-image" src={nomination.Poster}/>
+                            </div>
                         <Card.Title className="nomination-title">{nomination.Title}</Card.Title>
                     </div>
                 </Card>
@@ -128,7 +176,11 @@ export default class Vote extends Component {
                                 <Card.Text>{movie.Year}<span>Released</span></Card.Text>
                                 <Card.Text>0<span>Nominations</span></Card.Text>
                             </div>
-                            {this.setMovieCardButton(movie)}
+                            {this.setMovieCardButton(movie) === true ? 
+                                <Button type="button" variant="secondary" disabled>Nominated</Button> 
+                                :
+                                <Button type="button" variant="primary" onClick={() => this.onNominateMovie(movie)}>Nominate Movie</Button>
+                            }
                         </div>
                     </div>
                 </Card>
@@ -137,19 +189,16 @@ export default class Vote extends Component {
     }
 
     setMovieCardButton(movie) {
-        return (
-            this.state.personalNominations.length !== 0 ?
-            this.state.personalNominations.map( nomination => {
-                return (
-                    nomination.Title === movie.Title ? 
-                        <Button type="button" variant="secondary" disabled>Nominated</Button>
-                        :
-                        <Button type="button" variant="primary" onClick={() => this.onNominateMovie(movie)}>Nominate Movie</Button>
-                )
-            })
-            :
-            <Button type="button" variant="primary" onClick={() => this.onNominateMovie(movie)}>Nominate Movie</Button>
-        )
+        console.log('setting movie card button');
+        var nominated = this.state.personalNominations.filter( nomination => nomination.imdbID === movie.imdbID );
+        if (nominated.length !== 0) {
+            console.log('nominated: ', movie)
+            return true;
+        }
+        else {
+            console.log('not nominated: ', movie)
+            return false;
+        }
     }
 
     render() {
@@ -223,10 +272,19 @@ export default class Vote extends Component {
                         </Form>
                     </Card.Body>
                 </Card>
-                {this.state.movies.length === 0 ? '' :
+                {this.state.noResultsFound === false ? '' :
+                    <Card className="search-results-empty">
+                        <Card.Body>
+                            <Card.Title>Results for "{this.state.searchedTitle}"</Card.Title>
+                            <hr></hr>
+                            <Card.Text>Movie not found! The movie title you've searched for may have be mispelled or it may not exist in the OMDB database.</Card.Text>
+                        </Card.Body>
+                    </Card>
+                }
+                {this.state.movies.length === 0 || this.state.noResultsFound === true ? '' :
                     <Card className="search-results">
                         <Card.Body>
-                            <Card.Title>Results for "{this.state.searchTitle}"</Card.Title>
+                            <Card.Title>Results for "{this.state.searchedTitle}"</Card.Title>
                             <hr></hr>
                             <Row>
                                 {this.state.movies.map((movie) => {
