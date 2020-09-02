@@ -117,7 +117,6 @@ body {
             margin-bottom: 2.5em;
 
             &.card {
-                overflow: hidden;
                 background: none;
                 border-width: 0;
                 transition: all 250ms ease-in-out;
@@ -128,7 +127,7 @@ body {
                     
                     .header {
                         cursor: pointer;
-                        
+
                         .movie-image {
                             height: 270px;
                             border-radius: .25rem;
@@ -143,6 +142,7 @@ body {
                     .details {
                         opacity: 0;
                         height: 0;
+                        pointer-events: none;
 
                         .movie-stats {
                             columns: 2;
@@ -159,7 +159,6 @@ body {
             }
             
             &.card:hover {
-                overflow: visible;
                 background: #FFFFFF;
                 text-align: center;
                 border: 1px solid rgba(0,0,0,.125);
@@ -172,6 +171,7 @@ body {
                     .details {
                         opacity: 1;
                         height: unset;
+                        pointer-events: unset;
                         transition: opacity 250ms ease 200ms;
                     }
                 }

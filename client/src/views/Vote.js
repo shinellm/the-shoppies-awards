@@ -160,9 +160,34 @@ export default class Vote extends Component {
                         <Modal.Header closeButton>
                             <Modal.Title id="movie-details-title">{this.state.selectedMovieDetails.Title}</Modal.Title>
                         </Modal.Header>
-                        <Modal.Body>Woohoo, you're reading this text in a modal! We'll be adding movie details soon!</Modal.Body>
+                        <Modal.Body>
+                            <Row>
+                                <Col lg={5} md={12} sm={12} xs={12}>
+                                    <img src={this.state.selectedMovieDetails.Poster} />
+                                    <p>Country: {this.state.selectedMovieDetails.Country}</p>
+                                    <p>Languages: {this.state.selectedMovieDetails.Language}</p>
+                                    <p>Production: {this.state.selectedMovieDetails.Production}</p>
+                                    <p>Box Office: {this.state.selectedMovieDetails.BoxOffice}</p>
+                                    <p>Released: {this.state.selectedMovieDetails.Released}</p>
+                                    <p>Rated: {this.state.selectedMovieDetails.Rated}</p>
+                                    <p>Duration: {this.state.selectedMovieDetails.Runtime}</p>
+                                </Col>
+                                <Col lg={7} md={12} sm={12} xs={12}>
+                                    <p>{this.state.selectedMovieDetails.Plot}</p>
+                                    <p>Genre: {this.state.selectedMovieDetails.Genre}</p>
+                                    <p>Director: {this.state.selectedMovieDetails.Director}</p>
+                                    <p>Writers: {this.state.selectedMovieDetails.Writer}</p>
+                                    <p>Actors: {this.state.selectedMovieDetails.Actors}</p>
+                                    <p>Awards: {this.state.selectedMovieDetails.Awards}</p>
+                                    <ul style={{listStyle: "none", padding: "0"}}>Ratings: {this.state.selectedMovieDetails.Ratings.map( rating => {
+                                        return <li style={{paddingLeft: "40px"}}>{rating.Source} {rating.Value}</li>
+                                    })}
+                                    </ul>
+                                </Col>
+                            </Row>
+                        </Modal.Body>
                         <Modal.Footer>
-                            <Button variant="secondary" onClick={() => this.onShowMovieDetails(false)}>
+                            <Button variant="light" onClick={() => this.onShowMovieDetails(false)}>
                                 Close
                             </Button>
                             {this.setMovieCardButton(this.state.selectedMovieDetails)}
