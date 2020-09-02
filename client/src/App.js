@@ -3,7 +3,11 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ScrollButton from './components/ScrollBtn';
+
 import Home from './views/Home';
+import Vote from './views/Vote';
+import Nominees from './views/Nominees';
 import NotFound from './views/404NotFound';
 
 class App extends Component {
@@ -14,8 +18,12 @@ class App extends Component {
 
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/vote" component={Vote} />
+        <Route exact path="/nominees" component={Nominees} />
         <Route component={NotFound} />
       </Switch>
+
+      <ScrollButton targetId="root" behavior="smooth" iconType="arrow-up" />
 
       <Footer />
     </Router>

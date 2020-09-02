@@ -1,0 +1,181 @@
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+#root {
+  height: 100%;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.testForm div label {
+  margin-right: 8px;
+}
+
+.testForm div input {
+  margin-right: 4px;
+}
+
+.newPage {
+  display: flex;
+  justify-content: center;
+}
+
+.notFound {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.notFound p {
+  font-size: calc(10px + 2vmin);
+}
+
+.notFound img {
+  border-radius: 20%;
+  width: calc(80vmin);
+}
+
+#vote-container {
+    min-height: 100%;
+    padding: 3em;
+    background: radial-gradient(#525252, #131313);
+
+    .personal-movie-nominations {
+        margin-bottom: 1rem;
+
+        .nomination-card {
+            margin-bottom: 2.5em;
+
+            &.card {
+                background: none;
+                border-width: 0;
+                height: 314px;
+
+                .cover {
+                    .nomination-image {
+                        height: 270px;
+                        border-radius: .25rem;
+                        margin-bottom: 0.5em;
+                    }
+                    .nomination-title {
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+            }
+        }
+    }
+
+    .search-movies {
+        margin-bottom: 1rem;
+    }
+
+    .search-results {
+        .movie-card {
+            margin-bottom: 2.5em;
+
+            &.card {
+                overflow: hidden;
+                background: none;
+                border-width: 0;
+                transition: all 250ms ease-in-out;
+                height: 314px;
+
+                .cover {
+                    transition: all 250ms ease-in-out;
+                    
+                    .header {
+                        cursor: pointer;
+                        
+                        .movie-image {
+                            height: 270px;
+                            border-radius: .25rem;
+                            margin-bottom: 0.5em;
+                        }
+                        .movie-title {
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                    }
+                    .details {
+                        opacity: 0;
+                        height: 0;
+
+                        .movie-stats {
+                            columns: 2;
+                            column-rule: 1px solid rgba(0,0,0,.125);
+                            margin-bottom: 1em;
+                            
+                            .card-text span {
+                                display: block;
+                                font-size: 0.8em;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            &.card:hover {
+                overflow: visible;
+                background: #FFFFFF;
+                text-align: center;
+                border: 1px solid rgba(0,0,0,.125);
+                box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+                z-index: 1;
+
+                .cover {
+                    transform: translateY(-20%) scale(0.8);
+
+                    .details {
+                        opacity: 1;
+                        height: unset;
+                        transition: opacity 250ms ease 200ms;
+                    }
+                }
+            }
+        }
+    }    
+}

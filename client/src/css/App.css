@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   width: 100vw;
   height: 100vh;
 }
@@ -18,17 +19,27 @@ html, body {
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    -webkit-animation: App-logo-spin infinite 20s linear;
+            animation: App-logo-spin infinite 20s linear;
   }
 }
 
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -37,12 +48,25 @@ html, body {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+@-webkit-keyframes App-logo-spin {
   from {
-    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
   }
 }
 
@@ -55,15 +79,26 @@ html, body {
 }
 
 .newPage {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .notFound {
   min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .notFound p {
@@ -74,3 +109,114 @@ html, body {
   border-radius: 20%;
   width: calc(80vmin);
 }
+
+#vote-container {
+  min-height: 100%;
+  padding: 3em;
+  background: radial-gradient(#525252, #131313);
+}
+
+#vote-container .personal-movie-nominations {
+  margin-bottom: 1rem;
+}
+
+#vote-container .personal-movie-nominations .nomination-card {
+  margin-bottom: 2.5em;
+}
+
+#vote-container .personal-movie-nominations .nomination-card.card {
+  background: none;
+  border-width: 0;
+  height: 314px;
+}
+
+#vote-container .personal-movie-nominations .nomination-card.card .cover .nomination-image {
+  height: 270px;
+  border-radius: .25rem;
+  margin-bottom: 0.5em;
+}
+
+#vote-container .personal-movie-nominations .nomination-card.card .cover .nomination-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#vote-container .search-movies {
+  margin-bottom: 1rem;
+}
+
+#vote-container .search-results .movie-card {
+  margin-bottom: 2.5em;
+}
+
+#vote-container .search-results .movie-card.card {
+  overflow: hidden;
+  background: none;
+  border-width: 0;
+  -webkit-transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
+  height: 314px;
+}
+
+#vote-container .search-results .movie-card.card .cover {
+  -webkit-transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
+}
+
+#vote-container .search-results .movie-card.card .cover .header {
+  cursor: pointer;
+}
+
+#vote-container .search-results .movie-card.card .cover .header .movie-image {
+  height: 270px;
+  border-radius: .25rem;
+  margin-bottom: 0.5em;
+}
+
+#vote-container .search-results .movie-card.card .cover .header .movie-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#vote-container .search-results .movie-card.card .cover .details {
+  opacity: 0;
+  height: 0;
+}
+
+#vote-container .search-results .movie-card.card .cover .details .movie-stats {
+  -webkit-columns: 2;
+          columns: 2;
+  -webkit-column-rule: 1px solid rgba(0, 0, 0, 0.125);
+          column-rule: 1px solid rgba(0, 0, 0, 0.125);
+  margin-bottom: 1em;
+}
+
+#vote-container .search-results .movie-card.card .cover .details .movie-stats .card-text span {
+  display: block;
+  font-size: 0.8em;
+}
+
+#vote-container .search-results .movie-card.card:hover {
+  overflow: visible;
+  background: #FFFFFF;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  -webkit-box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+  z-index: 1;
+}
+
+#vote-container .search-results .movie-card.card:hover .cover {
+  -webkit-transform: translateY(-20%) scale(0.8);
+          transform: translateY(-20%) scale(0.8);
+}
+
+#vote-container .search-results .movie-card.card:hover .cover .details {
+  opacity: 1;
+  height: unset;
+  -webkit-transition: opacity 250ms ease 200ms;
+  transition: opacity 250ms ease 200ms;
+}
+/*# sourceMappingURL=App.css.map */
