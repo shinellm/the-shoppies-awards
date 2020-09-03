@@ -3,6 +3,11 @@ body {
   width: 100vw;
 }
 
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 .App {
   text-align: center;
 }
@@ -142,6 +147,90 @@ body {
   margin-bottom: 1rem;
 }
 
+#vote-container .personal-movie-nominations .submission-notification {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#vote-container .personal-movie-nominations .submission-notification p {
+  margin: 0;
+}
+
+#vote-container .personal-movie-nominations .submission-notification .btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-left: 1em;
+}
+
+#vote-container .personal-movie-nominations .submission-notification .btn p {
+  margin-left: 0.5em;
+}
+
+#vote-container .personal-movie-nominations .submission-card {
+  background: none;
+  border-width: 0;
+  height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#vote-container .personal-movie-nominations .submission-card .cover {
+  height: 50%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: .25rem;
+}
+
+#vote-container .personal-movie-nominations .submission-card .cover .btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 #vote-container .personal-movie-nominations .nomination-card {
   margin-bottom: 2.5em;
 }
@@ -220,6 +309,15 @@ body {
 
 #vote-container .search-movies {
   margin-bottom: 1rem;
+}
+
+#vote-container .search-movies hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+#vote-container .search-movies form .form-group .form-label {
+  margin-bottom: .75rem;
 }
 
 #vote-container .search-results .movie-card {

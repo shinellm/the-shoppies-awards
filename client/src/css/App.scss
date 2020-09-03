@@ -3,6 +3,10 @@ body {
   width: 100vw;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 .App {
   text-align: center;
 }
@@ -100,6 +104,56 @@ body {
     .personal-movie-nominations {
         margin-bottom: 1rem;
 
+        .submission-notification {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            p {
+                margin: 0;
+            }
+
+            .btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-left: 1em;
+
+                p {
+                    margin-left: 0.5em;
+                }
+            }
+        }
+
+        .submission-card {
+            background: none;
+            border-width: 0;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .cover {
+                height: 50%;
+                width: 100%;
+                display: flex;
+                flex-flow: column;
+                align-items: center;
+                justify-content: center;
+                background: #d4edda;
+                border: 1px solid #c3e6cb;
+                border-radius: .25rem;
+
+                .btn {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
         .nomination-card {
             margin-bottom: 2.5em;
 
@@ -177,6 +231,15 @@ body {
 
     .search-movies {
         margin-bottom: 1rem;
+
+        hr {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        form .form-group .form-label {
+            margin-bottom: .75rem;
+        }
     }
 
     .search-results .movie-card {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Breadcrumb, Card, Form, Row, Col, Button, Modal, Alert } from 'react-bootstrap';
 import { FaTimes } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
 import axios from "axios";
 
 export default class Vote extends Component {
@@ -13,6 +14,7 @@ export default class Vote extends Component {
             noResultsFound: false,
             showMovieDetails: false,
             showSubmissionBanner: false,
+            showSubmissionButton: false,
             selectedMovie: {},
             selectedMovieDetails: {},
             personalNominations: [],
@@ -49,9 +51,11 @@ export default class Vote extends Component {
         
         if (nominations.length === this.state.nominationLimit) {
             this.onShowSubmissionBanner(true);
+            this.onShowSubmissionButton(true);
         }
         else {
             this.onShowSubmissionBanner(false);
+            this.onShowSubmissionButton(false);
         }
     }
 
@@ -68,6 +72,10 @@ export default class Vote extends Component {
         this.setState({ showSubmissionBanner: value });
     }
 
+    onShowSubmissionButton(value) {
+        this.setState({ showSubmissionButton: value });
+    }
+
     onRemoveNominatedMovie(nomination) {
         let nominations = this.state.personalNominations;
         console.log('nominated: ', nominations)
@@ -78,7 +86,9 @@ export default class Vote extends Component {
             }
             console.log(nominated)
         })
-        console.log('remove: ',nomination,'nomination removed: ', nominations)
+        this.onShowSubmissionBanner(false);
+        this.onShowSubmissionButton(false);
+        console.log('remove: ', nomination,'nomination removed: ', nominations)
         this.setState({ personalNominations: nominations });
     }
 
@@ -293,6 +303,14 @@ export default class Vote extends Component {
                         <Card.Body>
                             <Card.Title>Your Movie Nominations ({this.state.personalNominations.length})</Card.Title>
                             <Row>
+                                {this.state.showSubmissionButton === false ? '' :
+                                    <Col lg={12} md={12} sm={12} xs={12}>
+                                        <Alert className="submission-notification" variant="success">
+                                            <p>Submit your movie nominations!</p>
+                                            <Button variant="success">{<FaCheck />}<p>Submit</p></Button>
+                                        </Alert>
+                                    </Col>
+                                }
                                 {this.state.personalNominations.map((nomination) => {
                                     return this.createNominationCard(nomination);
                                 })}
@@ -303,10 +321,16 @@ export default class Vote extends Component {
                 <Card className="search-movies">
                     <Card.Body>
                         <Card.Title>Cast your Votes</Card.Title>
-                        <Card.Text>Vote for your favorite movie and help it take home The Shoppies award.</Card.Text>
+                        <Card.Text className="voting-instructions">
+                            Select 5 of your favorite movies and help it take home The Shoppies Award. If you want to see more details for 
+                            specific movies, just click on the movie image. If you've accidentally nominated the wrong movie, just navigate to the 
+                            top of the page, hover on the movie image, and click the 'x' button to remove it from your movie nominations list. Once 
+                            you've selected 5 of your favorite movies, hit the 'submit' button to cast your vote. Let your voice be heard!
+                        </Card.Text>
+                        <hr></hr>
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Group controlId="formGroupSearchMovies">
-                                <Form.Label>Movie Title</Form.Label>
+                                <Form.Label className="h5">Movie Title</Form.Label>
                                 <Form.Control type="text" placeholder="Enter movie title" onChange={this.onPostChange} required/>
                             </Form.Group>
                             <Button type="submit" variant="primary">Search</Button>
