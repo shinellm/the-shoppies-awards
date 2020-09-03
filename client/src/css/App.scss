@@ -1,5 +1,19 @@
-// Import primary stylesheets for each sub-project
-@import "site/main.scss";
+// Modules and Variables
+@import "partials/base";
+
+// Partials
+// @import "partials/animations";
+// @import "partials/navigation/header";
+// @import "partials/navigation/footer";
+@import "partials/navigation/scrollBtn";
+// @import "partials/navigation/fullPageNav";
+// @import "partials/home/hero";
+// @import "partials/home/about";
+// @import "partials/home/featured";
+// @import "partials/home/contact";
+// @import "partials/projects/gallery";
+// @import "partials/projects/project";
+@import "partials/vote/vote";
 
 // /********** Extra large devices (large desktops, 1200px and up) **********/
 // @media only screen and (min-width: 1200px) {
