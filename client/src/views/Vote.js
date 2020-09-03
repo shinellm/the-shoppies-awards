@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Breadcrumb, Card, Form, Row, Col, Button, Modal } from 'react-bootstrap';
+import { Breadcrumb, Card, Form, Row, Col, Button, Modal, Alert } from 'react-bootstrap';
 import { FaTimes } from "react-icons/fa";
 import axios from "axios";
 
@@ -12,6 +12,7 @@ export default class Vote extends Component {
             movies: [],
             noResultsFound: false,
             showMovieDetails: false,
+            showSubmissionBanner: false,
             selectedMovie: {},
             selectedMovieDetails: {},
             personalNominations: []
@@ -21,6 +22,7 @@ export default class Vote extends Component {
         this.onNoResultsFound = this.onNoResultsFound.bind(this);
         this.onNominateMovie = this.onNominateMovie.bind(this);
         this.onShowMovieDetails = this.onShowMovieDetails.bind(this);
+        this.onShowSubmissionBanner = this.onShowSubmissionBanner.bind(this);
         this.onRemoveNominatedMovie = this.onRemoveNominatedMovie.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSearchMovieDetails = this.handleSearchMovieDetails.bind(this);
@@ -42,10 +44,21 @@ export default class Vote extends Component {
         let nominations = this.state.personalNominations;
         nominations.push(movie);
         this.setState({ personalNominations: nominations });
+        
+        if (nominations.length === 5) {
+            this.onShowSubmissionBanner(true);
+        }
+        else {
+            this.onShowSubmissionBanner(false);
+        }
     }
 
     onShowMovieDetails(value) {
-        this.setState({ showMovieDetails: value});
+        this.setState({ showMovieDetails: value });
+    }
+
+    onShowSubmissionBanner(value) {
+        this.setState({ showSubmissionBanner: value });
     }
 
     onRemoveNominatedMovie(nomination) {
@@ -176,10 +189,13 @@ export default class Vote extends Component {
                                 <Card.Text>{movie.Year}<span>Released</span></Card.Text>
                                 <Card.Text>0<span>Nominations</span></Card.Text>
                             </div>
-                            {this.setMovieCardButton(movie) === true ? 
-                                <Button type="button" variant="secondary" disabled>Nominated</Button> 
-                                :
-                                <Button type="button" variant="primary" onClick={() => this.onNominateMovie(movie)}>Nominate Movie</Button>
+                            {this.state.personalNominations.length === 5 ?  
+                                <Button type="button" variant="info" disabled>Limit Reached</Button>
+                                : 
+                                this.setMovieCardButton(movie) === true ? 
+                                    <Button type="button" variant="secondary" disabled>Nominated</Button> 
+                                    :
+                                    <Button type="button" variant="primary" onClick={() => this.onNominateMovie(movie)}>Nominate Movie</Button>
                             }
                         </div>
                     </div>
@@ -239,13 +255,27 @@ export default class Vote extends Component {
                             <Button variant="light" onClick={() => this.onShowMovieDetails(false)}>
                                 Close
                             </Button>
-                            {this.setMovieCardButton(this.state.selectedMovieDetails) === true ? 
-                                <Button type="button" variant="secondary" disabled>Nominated</Button> 
-                                :
-                                <Button type="button" variant="primary" onClick={() => this.onNominateMovie(this.state.selectedMovie)}>Nominate Movie</Button>
+                            {this.state.personalNominations.length === 5 ?  
+                                <Button type="button" variant="info" disabled>Limit Reached</Button>
+                                : 
+                                this.setMovieCardButton(this.state.selectedMovieDetails) === true ? 
+                                    <Button type="button" variant="secondary" disabled>Nominated</Button> 
+                                    :
+                                    <Button type="button" variant="primary" onClick={() => this.onNominateMovie(this.state.selectedMovie)}>Nominate Movie</Button>
                             }
                         </Modal.Footer>
                     </Modal>
+                }
+                {this.state.showSubmissionBanner === false ? '' :
+                    <div className="alert-container">
+                        <Alert variant="info" onClose={() => this.onShowSubmissionBanner(false)} dismissible>
+                            <Alert.Heading>Max Movie Nominations Reached</Alert.Heading>
+                            <p>
+                            You've added 5 movies to your list of nominations. Please submit your movie nominations list or 
+                            edit your previous nominations shown at the top of the page.
+                            </p>
+                        </Alert>
+                    </div>
                 }
                 <Breadcrumb>
                     <Breadcrumb.Item href="/">Home</Breadcrumb.Item>

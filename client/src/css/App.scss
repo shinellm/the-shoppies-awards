@@ -1,8 +1,8 @@
-html,
-body {
-  width: 100vw;
-  height: 100vh;
-}
+// html,
+// body {
+//   width: 100vw;
+//   height: 100vh;
+// }
 
 #root {
   height: 100%;
@@ -77,9 +77,30 @@ body {
 }
 
 #vote-container {
+    position: relative;
     min-height: 100%;
     padding: 3em;
     background: radial-gradient(#525252, #131313);
+
+    .alert-container {
+        position: fixed;
+        width: 100vw;
+        top: 4em;
+        left: 0;
+        z-index: 1020;
+
+        .alert {
+            border-radius: 0;
+
+            .close {
+                height: 40px;
+                width: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
 
     .personal-movie-nominations {
         margin-bottom: 1rem;
