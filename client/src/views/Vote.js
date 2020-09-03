@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Breadcrumb, Card, Form, Row, Col, Button, Modal, Alert } from 'react-bootstrap';
+import { Breadcrumb, Card, Form, Row, Col, Button, Modal, Alert, Toast } from 'react-bootstrap';
 import { FaTimes } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa";
 import axios from "axios";
@@ -11,8 +11,10 @@ export default class Vote extends Component {
             movieTitle: "",
             searchedTitle: "",
             movies: [],
+            notifications: [],
             noResultsFound: false,
             showMovieDetails: false,
+            showNotification: false,
             showSubmissionBanner: false,
             showSubmissionButton: false,
             selectedMovie: {},
@@ -25,10 +27,15 @@ export default class Vote extends Component {
         this.onNoResultsFound = this.onNoResultsFound.bind(this);
         this.onNominateMovie = this.onNominateMovie.bind(this);
         this.onShowMovieDetails = this.onShowMovieDetails.bind(this);
+        this.onShowNotification = this.onShowNotification.bind(this);
+        this.onRemoveNotification = this.onRemoveNotification.bind(this);
         this.onShowSubmissionBanner = this.onShowSubmissionBanner.bind(this);
         this.onRemoveNominatedMovie = this.onRemoveNominatedMovie.bind(this);
+
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSearchMovieDetails = this.handleSearchMovieDetails.bind(this);
+
+        this.createNotifications = this.createNotifications.bind(this);
         this.createNominationCard = this.createNominationCard.bind(this);
         this.createMovieCard = this.createMovieCard.bind(this);
         this.setMovieCardButton = this.setMovieCardButton.bind(this);
@@ -46,8 +53,12 @@ export default class Vote extends Component {
     onNominateMovie(movie) {
         let nominations = this.state.personalNominations;
         nominations.push(movie);
-        console.log(nominations);
         this.setState({ personalNominations: nominations });
+
+        let notifications = this.state.notifications;
+        notifications.push({header: "Nominated Movie", movie: movie});
+        this.setState({ notifications: notifications });
+        this.onShowNotification(true);
         
         if (nominations.length === this.state.nominationLimit) {
             this.onShowSubmissionBanner(true);
@@ -68,6 +79,25 @@ export default class Vote extends Component {
         }
     }
 
+    onShowNotification(value) {
+        console.log('notification: ', value)
+        this.setState({ showNotification: value });
+    }
+
+    onRemoveNotification(notification) {
+        let notifications = this.state.notifications;
+        notifications.map( (notice, index) => {
+            if (notice.movie.imdbID === notification.movie.imdbID) {
+                notifications.splice(index, 1);
+                return;
+            }
+        })
+
+        console.log(this.state.notifications)
+        this.onShowNotification(false);
+        // this.setState({ notifications: notifications });
+    }
+
     onShowSubmissionBanner(value) {
         this.setState({ showSubmissionBanner: value });
     }
@@ -78,18 +108,24 @@ export default class Vote extends Component {
 
     onRemoveNominatedMovie(nomination) {
         let nominations = this.state.personalNominations;
-        console.log('nominated: ', nominations)
         nominations.map( (nominated, index) => {
             if (nominated.imdbID === nomination.imdbID) {
                 nominations.splice(index, 1);
                 return;
             }
-            console.log(nominated)
         })
-        this.onShowSubmissionBanner(false);
-        this.onShowSubmissionButton(false);
-        console.log('remove: ', nomination,'nomination removed: ', nominations)
         this.setState({ personalNominations: nominations });
+
+        let notifications = this.state.notifications;
+        notifications.push({header: "Movie Removed from Nominations", movie: nomination});
+        this.setState({ notifications: notifications });
+        this.onShowNotification(true);
+
+        if (nominations.length !== this.state.nominationLimit) {
+            this.onShowSubmissionBanner(false);
+            this.onShowSubmissionButton(false);
+        }
+
     }
 
     // /*
@@ -174,6 +210,19 @@ export default class Vote extends Component {
         })
     };
 
+    createNotifications(notification) {
+        return (
+            <Toast className="bottom-right" key={`notification-${notification.movie.imdbID}`} onClose={() => this.onRemoveNotification(notification)} show={this.showNotification} delay={3000} autohide>
+                <Toast.Header>
+                    {/* <img src="holder.js/20x20?text=%20" className="rounded mr-2" alt="" /> */}
+                    <strong className="mr-auto">{notification.header}</strong>
+                    <small>just now</small>
+                </Toast.Header>
+                <Toast.Body className="notification-text">{notification.movie.Title}</Toast.Body>
+            </Toast>
+        )
+    }
+
     createNominationCard(nomination) {
         return (
             <Col key={`nominations-${nomination.imdbID}`} lg={2} md={3} sm={6} xs={12}>
@@ -223,15 +272,11 @@ export default class Vote extends Component {
     }
 
     setMovieCardButton(movie) {
-        console.log('setting movie card button');
         var nominated = this.state.personalNominations.filter( nomination => nomination.imdbID === movie.imdbID );
         if (nominated.length !== 0) {
-            console.log('nominated: ', movie)
             return true;
         }
-        else {
-            return false;
-        }
+        return false;
     }
 
     render() {
@@ -293,6 +338,19 @@ export default class Vote extends Component {
                             </p>
                         </Alert>
                     </div>
+                }
+                {this.state.notifications.length === 0 ? '' :
+                    <Row>
+                        <Col lg={12} md={12} sm={12} xs={12}>
+                            <div className="notification-container">
+                                <div className="notification">
+                                    {this.state.notifications.map((notification) => {
+                                        return this.createNotifications(notification);
+                                    })}
+                                </div>
+                            </div>
+                        </Col>
+                    </Row>
                 }
                 <Breadcrumb>
                     <Breadcrumb.Item href="/">Home</Breadcrumb.Item>

@@ -143,6 +143,50 @@ body {
           justify-content: center;
 }
 
+#vote-container .notification-container {
+  position: fixed;
+  bottom: .5em;
+  right: .5em;
+  z-index: 1020;
+}
+
+#vote-container .notification-container .notification .toast {
+  min-width: 350px;
+}
+
+#vote-container .notification-container .notification .toast.bottom-right {
+  -webkit-animation: toast-in-right .7s;
+          animation: toast-in-right .7s;
+}
+
+#vote-container .notification-container .notification .toast .notification-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@-webkit-keyframes toast-in-right {
+  from {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes toast-in-right {
+  from {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
 #vote-container .personal-movie-nominations {
   margin-bottom: 1rem;
 }
