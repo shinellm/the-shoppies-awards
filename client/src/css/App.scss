@@ -1,11 +1,6 @@
-// html,
-// body {
-//   width: 100vw;
-//   height: 100vh;
-// }
-
-#root {
-  height: 100%;
+html,
+body {
+  width: 100vw;
 }
 
 .App {
@@ -78,7 +73,7 @@
 
 #vote-container {
     position: relative;
-    min-height: 100%;
+    min-height: 100vh;
     padding: 3em;
     background: radial-gradient(#525252, #131313);
 

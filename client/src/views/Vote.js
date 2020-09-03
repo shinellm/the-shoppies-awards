@@ -44,6 +44,7 @@ export default class Vote extends Component {
     onNominateMovie(movie) {
         let nominations = this.state.personalNominations;
         nominations.push(movie);
+        console.log(nominations);
         this.setState({ personalNominations: nominations });
         
         if (nominations.length === this.state.nominationLimit) {
@@ -56,6 +57,11 @@ export default class Vote extends Component {
 
     onShowMovieDetails(value) {
         this.setState({ showMovieDetails: value });
+
+        if (value === false) {
+            this.setState({ selectedMovie: {} });
+            this.setState({ selectedMovieDetails: {} });
+        }
     }
 
     onShowSubmissionBanner(value) {
@@ -137,8 +143,8 @@ export default class Vote extends Component {
         })
     };
 
-    async handleSearchMovieDetails(id) {
-        await axios.get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&i=${id}&type=movie&plot=full&r=json`)
+    async handleSearchMovieDetails(movie) {
+        await axios.get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&i=${movie.imdbID}&type=movie&plot=full&r=json`)
         .then(res => {
             const movieData = res.data;
             console.log('reponse', res);
@@ -149,6 +155,7 @@ export default class Vote extends Component {
             }
             else {
                 this.onShowMovieDetails(true);
+                this.setState({ selectedMovie: movie });
                 this.setState({ selectedMovieDetails: movieData });
             }
         })
@@ -181,7 +188,7 @@ export default class Vote extends Component {
             <Col key={`movie-${movie.imdbID}`} lg={2} md={3} sm={6} xs={12}>
                 <Card className="movie-card">
                     <div className="cover">
-                        <div className="header" onClick={() => this.handleSearchMovieDetails(movie.imdbID)}>
+                        <div className="header" onClick={() => this.handleSearchMovieDetails(movie)}>
                             <Card.Img className="movie-image" src={movie.Poster}/>
                             <Card.Title className="movie-title">{movie.Title}</Card.Title>
                         </div>
@@ -213,7 +220,6 @@ export default class Vote extends Component {
             return true;
         }
         else {
-            console.log('not nominated: ', movie)
             return false;
         }
     }
