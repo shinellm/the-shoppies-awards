@@ -1,0 +1,17 @@
+// Color Palette
+$colors: (
+  primary: #fde9c9,
+  secondary: #89c5cc,
+  accent1: #ffc331,
+  accent2: #e44d26,
+  accent3: #db2721,
+  base1: #ffffff,
+  base2: #e5e5e5,
+  base3: #212529,
+  navHover: #c1dee2
+);
+
+// Color function
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}

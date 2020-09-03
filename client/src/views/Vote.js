@@ -117,7 +117,7 @@ export default class Vote extends Component {
         this.setState({ personalNominations: nominations });
 
         let notifications = this.state.notifications;
-        notifications.push({header: "Movie Removed from Nominations", movie: nomination});
+        notifications.push({header: "Removed from Nominations", movie: nomination});
         this.setState({ notifications: notifications });
         this.onShowNotification(true);
 
@@ -365,7 +365,7 @@ export default class Vote extends Component {
                                     <Col lg={12} md={12} sm={12} xs={12}>
                                         <Alert className="submission-notification" variant="success">
                                             <p>Submit your movie nominations!</p>
-                                            <Button variant="success">{<FaCheck />}<p>Submit</p></Button>
+                                            <Button variant="success" onClick={() => console.log(this.state.personalNominations)}>{<FaCheck />}<p>Submit</p></Button>
                                         </Alert>
                                     </Col>
                                 }
