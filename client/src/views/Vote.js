@@ -15,7 +15,8 @@ export default class Vote extends Component {
             showSubmissionBanner: false,
             selectedMovie: {},
             selectedMovieDetails: {},
-            personalNominations: []
+            personalNominations: [],
+            nominationLimit: 5
         };
 
         this.onPostChange = this.onPostChange.bind(this);
@@ -45,7 +46,7 @@ export default class Vote extends Component {
         nominations.push(movie);
         this.setState({ personalNominations: nominations });
         
-        if (nominations.length === 5) {
+        if (nominations.length === this.state.nominationLimit) {
             this.onShowSubmissionBanner(true);
         }
         else {
@@ -189,7 +190,7 @@ export default class Vote extends Component {
                                 <Card.Text>{movie.Year}<span>Released</span></Card.Text>
                                 <Card.Text>0<span>Nominations</span></Card.Text>
                             </div>
-                            {this.state.personalNominations.length === 5 ?  
+                            {this.state.personalNominations.length === this.state.nominationLimit ?  
                                 <Button type="button" variant="info" disabled>Limit Reached</Button>
                                 : 
                                 this.setMovieCardButton(movie) === true ? 
@@ -255,7 +256,7 @@ export default class Vote extends Component {
                             <Button variant="light" onClick={() => this.onShowMovieDetails(false)}>
                                 Close
                             </Button>
-                            {this.state.personalNominations.length === 5 ?  
+                            {this.state.personalNominations.length === this.state.nominationLimit ?  
                                 <Button type="button" variant="info" disabled>Limit Reached</Button>
                                 : 
                                 this.setMovieCardButton(this.state.selectedMovieDetails) === true ? 
@@ -271,7 +272,7 @@ export default class Vote extends Component {
                         <Alert variant="info" onClose={() => this.onShowSubmissionBanner(false)} dismissible>
                             <Alert.Heading>Max Movie Nominations Reached</Alert.Heading>
                             <p>
-                            You've added 5 movies to your list of nominations. Please submit your movie nominations list or 
+                            You've added {this.state.nominationLimit} movies to your list of nominations. Please submit your movie nominations list or 
                             edit your previous nominations shown at the top of the page.
                             </p>
                         </Alert>
