@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Header from './components/Header';
-import Footer from './components/Footer';
-import ScrollButton from './components/ScrollBtn';
+import Header from './components/navigation/Header';
+import Footer from './components/navigation/Footer';
+import ScrollButton from './components/navigation/ScrollBtn';
 
 import Home from './views/Home';
 import Vote from './views/Vote';

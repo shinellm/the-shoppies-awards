@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Breadcrumb } from 'react-bootstrap';
 
-import Search from "../components/Search";
-import Movies from "../components/Movies";
-import Nominations from "../components/Nominations";
-import Notifications from "../components/Notifications";
+import Search from "../components/vote/Search";
+import Movies from "../components/vote/Movies";
+import Nominations from "../components/vote/Nominations";
+import Notifications from "../components/vote/Notifications";
 
 export default class Vote extends Component {
     constructor() {
