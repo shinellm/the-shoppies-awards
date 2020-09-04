@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-// import logo from '../images/svg/reactlogo.svg';
-import logo from '../images/svg/logo.svg';
+// import logo from '../../images/svg/reactlogo.svg';
+import logo from '../../images/svg/logo.svg';
 
 export default class Header extends Component {
     render () {
