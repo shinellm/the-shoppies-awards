@@ -1,0 +1,29 @@
+.nomination-notifications-container .notification-container {
+    position: fixed;
+    bottom: .5em;
+    right: .5em;
+    z-index: 1020;
+    
+    .notification .toast {
+        min-width: 350px;
+
+        &.bottom-right {
+            animation: toast-in-right .7s;
+        }
+        .notification-text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    @keyframes toast-in-right {
+        from {
+            transform: translateX(100%);
+            
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
+}

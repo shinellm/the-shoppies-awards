@@ -1,0 +1,106 @@
+.personal-nominations-container .personal-movie-nominations {
+    margin-bottom: 1rem;
+
+    .submission-card {
+        background: none;
+        border-width: 0;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .cover {
+            height: 50%;
+            width: 100%;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: center;
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: .25rem;
+
+            .btn {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+    .nomination-card {
+        margin-bottom: 2.5em;
+
+        &.card {
+            background: none;
+            border-width: 0;
+            height: 314px;
+
+            .cover {
+                .remove-nomination {
+                    display: none;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    z-index: 1;
+
+                    svg {
+                        fill: #4c4747;
+                    }
+                }
+                .cover-image {
+                    position: relative;
+                    margin-bottom: 0.5em;
+                    border-radius: .25rem;
+                    overflow: hidden;
+
+                    .nomination-image-overlay {
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        opacity: 0;
+                        background-color: #000;
+                        transition: all 250ms ease-in-out;
+                    }
+                    .nomination-image {
+                        height: 270px;
+                    }
+                }
+                
+                .nomination-title {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+        &.card:hover {
+            .cover {
+                .remove-nomination { 
+                    top: -10px;
+                    right: -10px;
+                    height: 40px;
+                    width: 40px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .remove-nomination:hover {
+                    svg {
+                        fill: #007bff;
+                    }
+                }
+                .cover-image {
+                    .nomination-image-overlay {
+                        opacity: 0.5;
+                    }
+                }
+            }
+        }
+    }
+}
