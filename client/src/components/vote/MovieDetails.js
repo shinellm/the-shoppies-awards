@@ -85,7 +85,7 @@ export default class MovieDetails extends Component {
                                     <p>Actors: {this.state.selectedMovieDetails.Actors}</p>
                                     <p>Awards: {this.state.selectedMovieDetails.Awards}</p>
                                     <ul style={{listStyle: "none", padding: "0"}}>Ratings: {this.state.selectedMovieDetails.Ratings.map( rating => {
-                                        return <li style={{paddingLeft: "40px"}}>{rating.Source} {rating.Value}</li>
+                                        return <li key={`${rating.Source}-${this.state.selectedMovieDetails.imdbID}`} style={{paddingLeft: "40px"}}>{rating.Source} {rating.Value}</li>
                                     })}
                                     </ul>
                                 </Col>
