@@ -41,7 +41,7 @@ export default class Movies extends Component {
             console.log('reponse', res);
             console.log('data', movieData);
 
-            this.setState({ searchedTitle: this.state.movieTitle });
+            this.setState({ searchedTitle: searchValue });
 
             if (movieData.Response === "False") {
                 this.onNoResultsFound(true);
