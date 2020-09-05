@@ -53,13 +53,27 @@ export default class Nominees extends Component {
                     <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
                     <Breadcrumb.Item active>Nominees</Breadcrumb.Item>
                 </Breadcrumb>
-                {this.state.nominees.length === 0 ? '' :
+                {this.state.nominees.length === 0 ? 
+                    <Card>
+                        <Card.Body>
+                            <Card.Title>
+                                Movies Nominated for The Shoppies Award
+                            </Card.Title>
+                            <hr />
+                            <Card.Text>
+                                We are currently counting everyone's votes and compiling the list of 
+                                nominated movies. Please check back later to see which movies are in 
+                                the running for winning The Shoppies Award.
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                    :
                     <Card className="nominees-results">
                         <Card.Body>
                         <Card.Title>
                             Movies Nominated for The Shoppies Award
                         </Card.Title>
-                        <hr></hr>
+                        <hr />
                         <Row>
                             {this.state.nominees.map((nominee) => {
                             return this.createNomineesCard(nominee);

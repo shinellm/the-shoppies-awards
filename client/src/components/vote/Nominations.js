@@ -68,7 +68,7 @@ export default class Nominations extends Component {
                         <Card.Title>Your Movie Nominations ({this.state.personalNominations.length})</Card.Title>
                         <Row>
                             <Col lg={12} md={12} sm={12} xs={12}>
-                                <SubmissionButton ref={submissionButton => this.submissionButton = submissionButton}/>
+                                <SubmissionButton ref={submissionButton => this.submissionButton = submissionButton} personalNominations={this.state.personalNominations} />
                             </Col>
                             {this.state.personalNominations.map((nomination) => {
                                 return this.createNominationCard(nomination);

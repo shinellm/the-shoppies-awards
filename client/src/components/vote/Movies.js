@@ -54,7 +54,7 @@ export default class Movies extends Component {
             }
         })
         .catch(err => {
-            throw Error(err.message)
+          console.log(err);
         })
     };
 
