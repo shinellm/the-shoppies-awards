@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Alert } from 'react-bootstrap';
+import { Breadcrumb, Card, Alert } from 'react-bootstrap';
 
 import { FaTimes } from "react-icons/fa";
 
@@ -15,6 +15,11 @@ export default class ErrorPage extends Component {
     render() {
         return (
             <div className="error-container">
+                <Breadcrumb>
+                    <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+                    <Breadcrumb.Item href="/vote">Vote</Breadcrumb.Item>
+                    <Breadcrumb.Item active>Error</Breadcrumb.Item>
+                </Breadcrumb>
                 <Card className="error-card">
                     <Card.Body>
                         <Alert className="error-header" variant="danger">

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Alert } from 'react-bootstrap';
+import { Breadcrumb, Card, Alert } from 'react-bootstrap';
 
 import { FaCheck } from "react-icons/fa";
 
@@ -15,6 +15,11 @@ export default class ConfirmationPage extends Component {
     render() {
         return (
             <div className="confirmation-container">
+                <Breadcrumb>
+                    <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+                    <Breadcrumb.Item href="/vote">Vote</Breadcrumb.Item>
+                    <Breadcrumb.Item active>Confirmation</Breadcrumb.Item>
+                </Breadcrumb>
                 <Card className="confirmation-card">
                     <Card.Body>
                         <Alert className="confirmation-header" variant="success">
