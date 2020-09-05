@@ -16,9 +16,14 @@ export default class Nominees extends Component {
     }
 
     async componentDidMount() {
-        const response = await axios.get('api/nominees');
-        const nomineesData = response.data;
-        this.setState({ nominees: nomineesData });
+        await axios.get('api/nominees')
+        .then(res => {
+            const nomineesData = res.data;
+            this.setState({ nominees: nomineesData });
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
     handleSearchNomineeDetails(nominee) {
