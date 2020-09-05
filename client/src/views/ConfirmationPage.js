@@ -14,7 +14,7 @@ export default class ConfirmationPage extends Component {
 
     render() {
         return (
-            <div className="confirmation-container">
+            <div id="confirmation-container">
                 <Breadcrumb>
                     <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
                     <Breadcrumb.Item href="/vote">Vote</Breadcrumb.Item>

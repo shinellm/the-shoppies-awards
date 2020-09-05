@@ -1,92 +1,48 @@
 import React, { Component } from 'react';
-import { Breadcrumb, CardColumns, Card } from 'react-bootstrap';
+import { Breadcrumb, Card, Row, Col } from 'react-bootstrap';
 import axios from "axios";
+
+import NomineeDetails from "../components/nominees/NomineeDetails"
 
 export default class Nominees extends Component {
     constructor() {
         super();
         this.state = {
-            searchTitle: "",
-            movies: []
+            nominees: []
         };
 
-        this.onPostChange = this.onPostChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.createCard = this.createCard.bind(this);
+        this.createNomineesCard = this.createNomineesCard.bind(this);
+        this.handleSearchNomineeDetails = this.handleSearchNomineeDetails.bind(this);
     }
 
-    onPostChange(event) {
-        this.setState({ searchTitle: event.target.value });
+    async componentDidMount() {
+        const response = await axios.get('api/nominees');
+        const nomineesData = response.data;
+        this.setState({ nominees: nomineesData });
     }
 
-    // /*
-    //     This is a mock GET request it will return the info in the POST request and the express route.
-    //     It is a demonstration of an AJAX using the axios library
-    //     */
-    // async componentDidMount() {
-    //     const response = await axios.get(`http://www.omdbapi.com/?apikey=180ab669&s=${this.state.searchTitle}&type=movie&page=1&r=json`);
-    //     if (response.status !== 200) throw Error(response.message);
-    //     const movieData = response.data;
+    handleSearchNomineeDetails(nominee) {
+        this.nomineeDetails.handleSearchNomineeDetails(nominee);
+    }
 
-    //     console.log('reponse', response);
-    //     console.log('data', movieData);
-    //     console.log('movies', movieData.Search);
-        
-    //     this.setState({ movies: movieData.Search });
-
-    //     // return body;
-    // }
-
-    /* 
-        This is a mock POST request.
-        It is a demonstration of an AJAX call using the fetch API
-        */
-    // handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     const response = await fetch("/api/", {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({ post: this.state.post }),
-    //     });
-    //     console.log(response);
-    //     // const body = await response.text();
-    //     // this.setState({ responseToPost: body });
-    // };
-
-    async handleSubmit(event) {
-        event.preventDefault();
-        // const response = await fetch("/api/", {
-        // method: "POST",
-        // headers: {
-        //     "Content-Type": "application/json",
-        // },
-        // body: JSON.stringify({ post: this.state.post }),
-        // });
-        const response = await axios.get(`http://www.omdbapi.com/?apikey=180ab669&s=${this.state.searchTitle}&type=movie&page=1&r=json`);
-        if (response.status !== 200) throw Error(response.message);
-        const movieData = response.data;
-
-        console.log('reponse', response);
-        console.log('data', movieData);
-        console.log('movies', movieData.Search);
-        
-        this.setState({ movies: movieData.Search });
-    };
-
-    createCard(movie) {
+    createNomineesCard(nominee) {
         return (
-            <Card key={movie.imdbID} className="movie">
-                <Card.Img variant="top" src={movie.Poster} width="200px" heigth="300px" />
-                <Card.Body>
-                    <Card.Title>{movie.Title}</Card.Title>
-                    <Card.Text>Released: {movie.Year}</Card.Text>
-                </Card.Body>
-                <Card.Footer>
-                <small className="text-muted">Last updated 3 mins ago</small>
-                </Card.Footer>
-            </Card>
+            <Col key={`nominee-${nominee.imdbID}`} lg={2} md={3} sm={6} xs={12}>
+                <Card className="nominee-card">
+                    <div className="cover">
+                        <div className="header" onClick={() => this.handleSearchNomineeDetails(nominee)}>
+                            <Card.Img className="nominee-image" src={nominee.Poster}/>
+                            <Card.Title className="nominee-title">{nominee.Title}</Card.Title>
+                        </div>
+                        <div className="details">
+                            <div className="nominee-stats">
+                                <Card.Text>{nominee.Year}<span>Released</span></Card.Text>
+                                <Card.Text>0<span>Nominations</span></Card.Text>
+                            </div>
+                        </div>
+                    </div>
+                </Card>
+            </Col>
         )
     }
 
@@ -97,25 +53,22 @@ export default class Nominees extends Component {
                     <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
                     <Breadcrumb.Item active>Nominees</Breadcrumb.Item>
                 </Breadcrumb>
-                <p>Post to Backend Server</p>
-                <form className="testForm" onSubmit={this.handleSubmit}>
-                    <div>
-                        <label htmlFor="boilerplate_example">Movie Title:</label>
-                        <input
-                        type="post"
-                        value={this.state.searchTitle}
-                        onChange={this.onPostChange}
-                        />
-                        <button type="submit">Submit</button>
-                    </div>
-                </form>
-                {this.state.movies.length === 0 ? '' :
-                <CardColumns>
-                    {this.state.movies.map((movie) => {
-                        return this.createCard(movie);
-                    })}
-                </CardColumns>
+                {this.state.nominees.length === 0 ? '' :
+                    <Card className="nominees-results">
+                        <Card.Body>
+                        <Card.Title>
+                            Movies Nominated for The Shoppies Award
+                        </Card.Title>
+                        <hr></hr>
+                        <Row>
+                            {this.state.nominees.map((nominee) => {
+                            return this.createNomineesCard(nominee);
+                            })}
+                        </Row>
+                        </Card.Body>
+                    </Card>
                 }
+                <NomineeDetails ref={(nomineeDetails) => (this.nomineeDetails = nomineeDetails)}/>
             </div>
         )
     }

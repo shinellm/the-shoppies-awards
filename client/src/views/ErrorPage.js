@@ -4,17 +4,9 @@ import { Breadcrumb, Card, Alert } from 'react-bootstrap';
 import { FaTimes } from "react-icons/fa";
 
 export default class ErrorPage extends Component {
-    constructor() {
-        super();
-        this.state = {
-
-        };
-
-    }
-
     render() {
         return (
-            <div className="error-container">
+            <div id="error-container">
                 <Breadcrumb>
                     <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
                     <Breadcrumb.Item href="/vote">Vote</Breadcrumb.Item>

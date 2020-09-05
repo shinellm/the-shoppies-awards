@@ -35,14 +35,14 @@ export default class MovieDetails extends Component {
             console.log('reponse', res);
             console.log('Movie Details', movieData);
 
-            if (movieData.Response === "False") {
-                this.onNoResultsFound(true);
-            }
-            else {
+            // if (movieData.Response === "False") {
+            //     this.onNoResultsFound(true);
+            // }
+            // else {
                 this.onShowMovieDetails(true);
                 this.setState({ selectedMovie: movie });
                 this.setState({ selectedMovieDetails: movieData });
-            }
+            // }
         })
         .catch(err => {
             throw Error(err.message)
