@@ -9,6 +9,8 @@ import Home from './views/Home';
 import Vote from './views/Vote';
 import Nominees from './views/Nominees';
 import NotFound from './views/404NotFound';
+import ConfirmationPage from './views/ConfirmationPage';
+import ErrorPage from './views/ErrorPage';
 
 class App extends Component {
   render() {
@@ -19,6 +21,8 @@ class App extends Component {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/vote" component={Vote} />
+        <Route exact path="/vote/confirmation" component={ConfirmationPage} />
+        <Route exact path="/vote/error" component={ErrorPage} />
         <Route exact path="/nominees" component={Nominees} />
         <Route component={NotFound} />
       </Switch>

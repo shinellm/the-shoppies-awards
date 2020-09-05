@@ -1,0 +1,29 @@
+.error-container {
+    min-height: 100vh;
+    padding: 3em;
+    background: radial-gradient(#525252, #131313); 
+
+    .error-card {
+        .error-header {
+            display: flex;
+            align-content: center;
+
+            .error {
+                width: 35px;
+                height: 35px;
+                color: #FFFFFF;
+                margin-right: 0.5em;
+                background: #dc3545;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .alert-heading {
+                margin: 0;
+                line-height: unset;
+            }
+        }
+    }
+}

@@ -648,4 +648,78 @@ body {
   padding: 3em;
   background: radial-gradient(#525252, #131313);
 }
+
+.confirmation-container {
+  min-height: 100vh;
+  padding: 3em;
+  background: radial-gradient(#525252, #131313);
+}
+
+.confirmation-container .confirmation-card .confirmation-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.confirmation-container .confirmation-card .confirmation-header .success {
+  width: 35px;
+  height: 35px;
+  color: #FFFFFF;
+  margin-right: 0.5em;
+  background: #28a745;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.confirmation-container .confirmation-card .confirmation-header .alert-heading {
+  margin: 0;
+  line-height: unset;
+}
+
+.error-container {
+  min-height: 100vh;
+  padding: 3em;
+  background: radial-gradient(#525252, #131313);
+}
+
+.error-container .error-card .error-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.error-container .error-card .error-header .error {
+  width: 35px;
+  height: 35px;
+  color: #FFFFFF;
+  margin-right: 0.5em;
+  background: #dc3545;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.error-container .error-card .error-header .alert-heading {
+  margin: 0;
+  line-height: unset;
+}
 /*# sourceMappingURL=App.css.map */
