@@ -14,7 +14,7 @@ router.get('/nominees', async (req, res, next) => {
     res.json(allNominees);
   } catch(error) {
     console.log("backend error while GETting the list of nominees", error);
-    next(error);
+    res.status(500).send(error);
   }
 });
 
@@ -25,7 +25,7 @@ router.post('/nominees', async (req, res, next) => {
   try {
     let success = true;
 
-    for (nominee of req.body) {
+    for (const nominee of req.body) {
       const exisitingNominee = await Nominees.findByPk(nominee.imdbID);
 
       // check if nominee's imdbID exists in database
