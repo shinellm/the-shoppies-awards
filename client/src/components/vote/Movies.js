@@ -73,8 +73,7 @@ export default class Movies extends Component {
                         </div>
                         <div className="details">
                             <div className="movie-stats">
-                                <Card.Text>{movie.Year}<span>Released</span></Card.Text>
-                                <Card.Text>0<span>Nominations</span></Card.Text>
+                                <Card.Text>Released<span>{movie.Year}</span></Card.Text>
                             </div>
                             {this.state.personalNominations.length === this.state.nominationLimit ?  
                                 <Button type="button" variant="info" disabled>Limit Reached</Button>

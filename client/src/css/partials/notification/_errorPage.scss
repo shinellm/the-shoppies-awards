@@ -25,5 +25,13 @@
                 line-height: unset;
             }
         }
+
+        .card-text {
+            a {
+                display: inline;
+                padding: 0;
+                text-decoration: underline;
+            }
+        }
     }
 }

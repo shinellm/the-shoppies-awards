@@ -49,7 +49,7 @@ export default class Nominations extends Component {
                             </Button>
                             <div className="cover-image">
                                 <div className="nomination-image-overlay"></div>
-                                <Card.Img className="nomination-image" src={nomination.Poster}/>
+                                <Card.Img className="nomination-image" src={nomination.Poster === 'N/A' ? '../../images/placeholder.png' : nomination.Poster}/>
                             </div>
                         <Card.Title className="nomination-title">{nomination.Title}</Card.Title>
                     </div>

@@ -26,6 +26,14 @@
             }
         }
 
+        .card-text {
+            a {
+                display: inline;
+                padding: 0;
+                text-decoration: underline;
+            }
+        }
+
         .share-on-social {
             .sharable-links {
 

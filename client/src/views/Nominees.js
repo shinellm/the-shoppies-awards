@@ -35,7 +35,7 @@ export default class Nominees extends Component {
             <Col key={`nominee-${nominee.movie_imdbID}`} lg={2} md={3} sm={6} xs={12}>
                 <Card className="nominee-card">
                     <div className="cover">
-                        {index > 20 ? '' :
+                        {index >= 20 ? '' :
                             <div className="rank">{index + 1}</div>
                         }
                         <div className="header" onClick={() => this.handleSearchNomineeDetails(nominee)}>
@@ -81,6 +81,14 @@ export default class Nominees extends Component {
                         <Card.Title>
                             Movies Nominated for The Shoppies Award
                         </Card.Title>
+                        <Card.Text>
+                            Votes are coming in around the clock as everyone submits their favorite movies. 
+                            Check out our running list of nominated movies and see how many nominations your 
+                            favorite movie has gotten so far. The list is ordered from greatest number of nominations 
+                            to least number of nominations. If you want to see the exact number of nominations a 
+                            particular movie has received, just hover over it. If you've stumbled upon a movie and 
+                            want to see more details about it, just click on the movie's image or title. 
+                        </Card.Text>
                         <hr />
                         <Row>
                             {this.state.nominees.map((nominee, index) => {

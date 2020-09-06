@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Breadcrumb, Card, Alert } from 'react-bootstrap';
+import { Breadcrumb, Card, Alert, Nav } from 'react-bootstrap';
 
 import { FaTimes } from "react-icons/fa";
 
@@ -22,7 +22,9 @@ export default class ErrorPage extends Component {
                         </Alert>
                         <Card.Text>
                         Unfortunately, an error has occurred while processing your submission. Please try to 
-                        visit the voting page and resumbit your nominations at a later time.
+                        visit the voting page and resumbit your nominations at a later time. In the meantime, 
+                        why not check out the <Nav.Link href={'/nominees'}>Nominees page</Nav.Link> and 
+                        see who's at the top of the ranking.
                         </Card.Text>
                     </Card.Body>
                 </Card>

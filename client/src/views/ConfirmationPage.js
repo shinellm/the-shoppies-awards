@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Breadcrumb, Card, Alert } from 'react-bootstrap';
+import { Breadcrumb, Card, Alert, Nav } from 'react-bootstrap';
 
 import { FaCheck } from "react-icons/fa";
 
@@ -29,10 +29,9 @@ export default class ConfirmationPage extends Component {
                             </Alert.Heading>
                         </Alert>
                         <Card.Text>
-                        Thanks for casting your vote and helping your favorite movies get the 
-                        chance to win The Shoppies Award! While we continue to compile our list 
-                        of movie nominees, feel free to check out the Nominees page and see who's
-                        at the top of the ranking.
+                        Thanks for casting your vote and helping your favorite movies get the chance to win The Shoppies Award! While we continue 
+                        to compile our list of movie nominees, feel free to check out the <Nav.Link href={'/nominees'}>Nominees page</Nav.Link> and 
+                        see who's at the top of the ranking.
                         </Card.Text>
                         <hr />
                         <div className="share-on-social">
