@@ -431,11 +431,11 @@ body {
   margin-bottom: .75rem;
 }
 
-.movie-results-container .search-results .movie-card {
+.movie-results-container .search-results .card-body .movie-card {
   margin-bottom: 2.5em;
 }
 
-.movie-results-container .search-results .movie-card.card {
+.movie-results-container .search-results .card-body .movie-card.card {
   background: none;
   border-width: 0;
   -webkit-transition: all 250ms ease-in-out;
@@ -443,43 +443,43 @@ body {
   height: 314px;
 }
 
-.movie-results-container .search-results .movie-card.card .cover {
+.movie-results-container .search-results .card-body .movie-card.card .cover {
   -webkit-transition: all 250ms ease-in-out;
   transition: all 250ms ease-in-out;
 }
 
-.movie-results-container .search-results .movie-card.card .cover .header {
+.movie-results-container .search-results .card-body .movie-card.card .cover .header {
   cursor: pointer;
 }
 
-.movie-results-container .search-results .movie-card.card .cover .header .movie-image {
+.movie-results-container .search-results .card-body .movie-card.card .cover .header .movie-image {
   height: 270px;
   border-radius: .25rem;
   margin-bottom: 0.5em;
 }
 
-.movie-results-container .search-results .movie-card.card .cover .header .movie-title {
+.movie-results-container .search-results .card-body .movie-card.card .cover .header .movie-title {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.movie-results-container .search-results .movie-card.card .cover .details {
+.movie-results-container .search-results .card-body .movie-card.card .cover .details {
   opacity: 0;
   height: 0;
   pointer-events: none;
 }
 
-.movie-results-container .search-results .movie-card.card .cover .details .movie-stats {
+.movie-results-container .search-results .card-body .movie-card.card .cover .details .movie-stats {
   margin-bottom: 1em;
 }
 
-.movie-results-container .search-results .movie-card.card .cover .details .movie-stats .card-text span {
+.movie-results-container .search-results .card-body .movie-card.card .cover .details .movie-stats .card-text span {
   display: block;
   font-size: 0.8em;
 }
 
-.movie-results-container .search-results .movie-card.card:hover {
+.movie-results-container .search-results .card-body .movie-card.card:hover {
   background: #FFFFFF;
   text-align: center;
   border: 1px solid rgba(0, 0, 0, 0.125);
@@ -488,17 +488,21 @@ body {
   z-index: 1;
 }
 
-.movie-results-container .search-results .movie-card.card:hover .cover {
+.movie-results-container .search-results .card-body .movie-card.card:hover .cover {
   -webkit-transform: translateY(-20%) scale(0.8);
           transform: translateY(-20%) scale(0.8);
 }
 
-.movie-results-container .search-results .movie-card.card:hover .cover .details {
+.movie-results-container .search-results .card-body .movie-card.card:hover .cover .details {
   opacity: 1;
   height: unset;
   pointer-events: unset;
   -webkit-transition: opacity 250ms ease 200ms;
   transition: opacity 250ms ease 200ms;
+}
+
+.movie-results-container .search-results .card-body .row .load-more {
+  margin: 1em 0 3em 0;
 }
 
 .personal-nominations-container .personal-movie-nominations {

@@ -23,7 +23,7 @@ export default class Vote extends Component {
     handleSearchMovie(searchValue, event) {
         event.preventDefault();
 
-        this.movies.handleSearchMovie(searchValue);
+        this.movies.handleSearchMovie(searchValue, 1);
     }
 
     onNominateMovie(movie) {

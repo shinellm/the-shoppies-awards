@@ -1,62 +1,71 @@
-.movie-results-container .search-results .movie-card {
-    margin-bottom: 2.5em;
+.movie-results-container .search-results {
 
-    &.card {
-        background: none;
-        border-width: 0;
-        transition: all 250ms ease-in-out;
-        height: 314px;
+    .card-body {
+        .movie-card {
+            margin-bottom: 2.5em;
 
-        .cover {
-            transition: all 250ms ease-in-out;
-            
-            .header {
-                cursor: pointer;
+            &.card {
+                background: none;
+                border-width: 0;
+                transition: all 250ms ease-in-out;
+                height: 314px;
 
-                .movie-image {
-                    height: 270px;
-                    border-radius: .25rem;
-                    margin-bottom: 0.5em;
-                }
-                .movie-title {
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
+                .cover {
+                    transition: all 250ms ease-in-out;
+                    
+                    .header {
+                        cursor: pointer;
+
+                        .movie-image {
+                            height: 270px;
+                            border-radius: .25rem;
+                            margin-bottom: 0.5em;
+                        }
+                        .movie-title {
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                    }
+                    .details {
+                        opacity: 0;
+                        height: 0;
+                        pointer-events: none;
+
+                        .movie-stats {
+                            margin-bottom: 1em;
+                            
+                            .card-text span {
+                                display: block;
+                                font-size: 0.8em;
+                            }
+                        }
+                    }
                 }
             }
-            .details {
-                opacity: 0;
-                height: 0;
-                pointer-events: none;
+            
+            &.card:hover {
+                background: #FFFFFF;
+                text-align: center;
+                border: 1px solid rgba(0,0,0,.125);
+                box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+                z-index: 1;
 
-                .movie-stats {
-                    margin-bottom: 1em;
-                    
-                    .card-text span {
-                        display: block;
-                        font-size: 0.8em;
+                .cover {
+                    transform: translateY(-20%) scale(0.8);
+
+                    .details {
+                        opacity: 1;
+                        height: unset;
+                        pointer-events: unset;
+                        transition: opacity 250ms ease 200ms;
                     }
                 }
             }
         }
-    }
-    
-    &.card:hover {
-        background: #FFFFFF;
-        text-align: center;
-        border: 1px solid rgba(0,0,0,.125);
-        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
-        z-index: 1;
 
-        .cover {
-            transform: translateY(-20%) scale(0.8);
-
-            .details {
-                opacity: 1;
-                height: unset;
-                pointer-events: unset;
-                transition: opacity 250ms ease 200ms;
-            }
+        .row .load-more {
+            margin: 1em 0 3em 0;
         }
     }
 }    

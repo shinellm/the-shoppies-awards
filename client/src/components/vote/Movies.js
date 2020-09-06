@@ -9,57 +9,94 @@ export default class Movies extends Component {
         super(props);
         this.state = {
             searchedTitle: "",
+            page: 1,
             movies: [],
+            totalResults: 0,
             noResultsFound: false,
             personalNominations: this.props.personalNominations,
             nominateMovie: this.props.nominateMovie,
             nominationLimit: this.props.nominationLimit
         };
 
+        this.onSetPage = this.onSetPage.bind(this);
         this.onSetMovies = this.onSetMovies.bind(this);
+        this.onAppendLoadedMovies = this.onAppendLoadedMovies.bind(this);
+        this.onSetTotalResults = this.onSetTotalResults.bind(this);
         this.onNoResultsFound = this.onNoResultsFound.bind(this);
 
         this.handleSearchMovie = this.handleSearchMovie.bind(this);
         this.handleSearchMovieDetails = this.handleSearchMovieDetails.bind(this);
 
+        this.loadMoreMovies = this.loadMoreMovies.bind(this);
         this.createMovieCard = this.createMovieCard.bind(this);
         this.setMovieCardButton = this.setMovieCardButton.bind(this);
     }
 
-    onSetMovies(value) {
-        this.setState({ movies: value });
+    onSetPage(value) {
+      this.setState({ page: value });
+    }
+
+    onSetMovies(array) {
+      this.setState({ movies: array });
+    }
+
+    onAppendLoadedMovies(array) {
+      const listOfMovies = this.state.movies;
+
+      const newlist = listOfMovies.concat(array);
+      this.setState({ movies: newlist }); 
+      console.log(newlist );
+    }
+
+    onSetTotalResults(value) {
+      this.setState({ totalResults: value });
     }
 
     onNoResultsFound(value) {
         this.setState({ noResultsFound: value });
     }
 
-    async handleSearchMovie(searchValue) {
-        await axios.get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&s=${searchValue}&type=movie&page=1&r=json`)
-        .then(res => {
-            const movieData = res.data;
-            console.log('reponse', res);
-            console.log('data', movieData);
+    async handleSearchMovie(searchValue, page) {
+      await axios.get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&s=${searchValue}&type=movie&page=${page}&r=json`)
+      .then(res => {
+        const movieData = res.data;
+        console.log('reponse', res);
+        console.log('data', movieData);
 
-            this.setState({ searchedTitle: searchValue });
+        this.setState({ searchedTitle: searchValue });
 
-            if (movieData.Response === "False") {
-                this.onNoResultsFound(true);
-                this.onSetMovies([]);
-            }
-            else {
-                console.log('movies', movieData.Search);
-                this.onNoResultsFound(false);
-                this.onSetMovies(movieData.Search);
-            }
-        })
-        .catch(err => {
-          console.log(err);
-        })
+        if (movieData.Response === "False") {
+          this.onNoResultsFound(true);
+          this.onSetPage(1);
+          this.onSetMovies([]);
+          this.onSetTotalResults(0);
+        }
+        else if (this.state.movies.length !== 0 && page !== 1) {
+          console.log('page',page,'movies', movieData.Search);
+          this.onNoResultsFound(false);
+          this.onSetPage(page + 1);
+          this.onAppendLoadedMovies(movieData.Search);
+        }
+        else {
+          console.log('initial page',page,'movies', movieData.Search);
+          this.onNoResultsFound(false);
+          this.onSetPage(page + 1);
+          this.onSetMovies(movieData.Search);
+          this.onSetTotalResults(parseInt(movieData.totalResults), 10);
+        }
+        console.log(this.state.totalResults,this.state.movies.length)
+      })
+      .catch(err => {
+        console.log(err);
+      })
     };
 
     handleSearchMovieDetails(movie) {
-        this.movieDetails.handleSearchMovieDetails(movie);
+      this.movieDetails.handleSearchMovieDetails(movie);
+    }
+
+    loadMoreMovies() {
+      this.handleSearchMovie(this.state.searchedTitle, this.state.page);
     }
 
     createMovieCard(movie) {
@@ -124,7 +161,7 @@ export default class Movies extends Component {
               <Card className="search-results">
                 <Card.Body>
                   <Card.Title>
-                    Results for "{this.state.searchedTitle}"
+                    {this.state.totalResults} Results for "{this.state.searchedTitle}"
                   </Card.Title>
                   <hr></hr>
                   <Row>
@@ -132,6 +169,11 @@ export default class Movies extends Component {
                       return this.createMovieCard(movie);
                     })}
                   </Row>
+                  {this.state.totalResults === this.state.movies.length ? '' :
+                    <Row className="justify-content-md-center">
+                      <Button className="load-more" variant="primary" onClick={this.loadMoreMovies}>Load More Movies</Button>
+                    </Row>
+                  }
                 </Card.Body>
               </Card>
             )}
