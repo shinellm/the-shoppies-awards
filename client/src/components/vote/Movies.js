@@ -68,7 +68,7 @@ export default class Movies extends Component {
                 <Card className="movie-card">
                     <div className="cover">
                         <div className="header" onClick={() => this.handleSearchMovieDetails(movie)}>
-                            <Card.Img className="movie-image" src={movie.Poster}/>
+                            <Card.Img className="movie-image" src={movie.Poster === 'N/A' ? '../../images/placeholder.png' : movie.Poster}/>
                             <Card.Title className="movie-title">{movie.Title}</Card.Title>
                         </div>
                         <div className="details">

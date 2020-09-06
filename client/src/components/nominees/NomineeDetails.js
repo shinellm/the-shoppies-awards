@@ -46,7 +46,6 @@ export default class NomineeDetails extends Component {
     };
 
     render() {
-        console.log(this.state.selectedNomineeDetails.Poster, this.state.selectedNomineeDetails.Poster === 'N/A' ? '../../images/placeholder.png' : this.state.selectedNomineeDetails.Poster)
         return (
             <div className="nominee-details-container">
                 {Object.keys(this.state.selectedNomineeDetails).length === 0 ? '' :

@@ -68,7 +68,7 @@ export default class MovieDetails extends Component {
                         <Modal.Body>
                             <Row>
                                 <Col lg={5} md={12} sm={12} xs={12}>
-                                    <img src={this.state.selectedMovieDetails.Poster} />
+                                    <img src={this.state.selectedMovieDetails.Poster === 'N/A' ? '../../images/placeholder.png' : this.state.selectedMovieDetails.Poster} />
                                     <p>Country: {this.state.selectedMovieDetails.Country}</p>
                                     <p>Languages: {this.state.selectedMovieDetails.Language}</p>
                                     <p>Production: {this.state.selectedMovieDetails.Production}</p>

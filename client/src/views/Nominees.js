@@ -31,7 +31,6 @@ export default class Nominees extends Component {
     }
 
     createNomineesCard(nominee, index) {
-        console.log(nominee.movie_poster, nominee.movie_poster === 'N/A' ? '../../images/placeholder.png' : nominee.movie_poster)
         return (
             <Col key={`nominee-${nominee.movie_imdbID}`} lg={2} md={3} sm={6} xs={12}>
                 <Card className="nominee-card">
