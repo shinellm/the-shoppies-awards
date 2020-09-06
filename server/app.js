@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const database = require('./db/database');
 const createError = require('http-errors');
 const cookieParser = require('cookie-parser');
 
@@ -9,7 +10,7 @@ const isDev = process.env.NODE_ENV !== 'production';
 const PORT = process.env.PORT || 8080;
 
 // api routes
-const indexRouter = require('./api/index');
+const nomineesRouter = require('./api/nominees');
 
 const app = express();
 
@@ -32,7 +33,7 @@ const createApp = () => {
   app.use(express.static(path.join(__dirname, '../client/build')));
 
   // auth and api routes
-  app.use('/api', indexRouter);
+  app.use('/api', nomineesRouter);
 
   // if express doesn't recognize the route, the React app will handle the routing
   app.use('/*', (req, res) => {
@@ -59,7 +60,10 @@ const startListening = () => {
   const server = app.listen(PORT, () => console.log(`Node ${isDev ? 'dev server' : 'production server'}: Mixing it up on port ${PORT}`));
 }
 
+const syncDatabase = () => database.sync();
+
 async function bootApp() {
+  syncDatabase();
   createApp();
   startListening();
 }
