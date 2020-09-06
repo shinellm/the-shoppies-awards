@@ -30,19 +30,23 @@ export default class Nominees extends Component {
         this.nomineeDetails.handleSearchNomineeDetails(nominee);
     }
 
-    createNomineesCard(nominee) {
+    createNomineesCard(nominee, index) {
+        console.log(nominee.movie_poster, nominee.movie_poster === 'N/A' ? '../../images/placeholder.png' : nominee.movie_poster)
         return (
-            <Col key={`nominee-${nominee.imdbID}`} lg={2} md={3} sm={6} xs={12}>
+            <Col key={`nominee-${nominee.movie_imdbID}`} lg={2} md={3} sm={6} xs={12}>
                 <Card className="nominee-card">
                     <div className="cover">
+                        {index > 20 ? '' :
+                            <div className="rank">{index + 1}</div>
+                        }
                         <div className="header" onClick={() => this.handleSearchNomineeDetails(nominee)}>
-                            <Card.Img className="nominee-image" src={nominee.Poster}/>
-                            <Card.Title className="nominee-title">{nominee.Title}</Card.Title>
+                            <Card.Img className="nominee-image" src={nominee.movie_poster === 'N/A' ? '../../images/placeholder.png' : nominee.movie_poster}/>
+                            <Card.Title className="nominee-title">{nominee.movie_title}</Card.Title>
                         </div>
                         <div className="details">
                             <div className="nominee-stats">
-                                <Card.Text>{nominee.Year}<span>Released</span></Card.Text>
-                                <Card.Text>0<span>Nominations</span></Card.Text>
+                                <Card.Text>{nominee.movie_year}<span>Released</span></Card.Text>
+                                <Card.Text>{nominee.movie_votes}<span>Nominations</span></Card.Text>
                             </div>
                         </div>
                     </div>
@@ -80,8 +84,8 @@ export default class Nominees extends Component {
                         </Card.Title>
                         <hr />
                         <Row>
-                            {this.state.nominees.map((nominee) => {
-                            return this.createNomineesCard(nominee);
+                            {this.state.nominees.map((nominee, index) => {
+                            return this.createNomineesCard(nominee, index);
                             })}
                         </Row>
                         </Card.Body>

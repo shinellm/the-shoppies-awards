@@ -3,7 +3,7 @@
     padding: 3em;
     background: radial-gradient(#525252, #131313);
 
-    .nominees-results .nominees-card {
+    .nominees-results .nominee-card {
         margin-bottom: 2.5em;
 
         &.card {
@@ -15,15 +15,25 @@
             .cover {
                 transition: all 250ms ease-in-out;
                 
+                .rank {
+                    position: absolute;
+                    top: 0;
+                    right: 1em;
+                    color: #FFFFFF;
+                    font-weight: bold;
+                    background: rgba(0,0,0,.75);
+                    padding: .5em .5em .75em;
+                    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 87%, 0 100%);
+                }
                 .header {
                     cursor: pointer;
 
-                    .nominees-image {
+                    .nominee-image {
                         height: 270px;
                         border-radius: .25rem;
                         margin-bottom: 0.5em;
                     }
-                    .nominees-title {
+                    .nominee-title {
                         white-space: nowrap;
                         overflow: hidden;
                         text-overflow: ellipsis;
@@ -34,12 +44,12 @@
                     height: 0;
                     pointer-events: none;
 
-                    .nominees-stats {
+                    .nominee-stats {
                         columns: 2;
                         column-rule: 1px solid rgba(0,0,0,.125);
                         margin-bottom: 1em;
                         
-                        .nominees-text span {
+                        .card-text span {
                             display: block;
                             font-size: 0.8em;
                         }
@@ -56,7 +66,7 @@
             z-index: 1;
 
             .cover {
-                transform: translateY(-20%) scale(0.8);
+                transform: translateY(-9%) scale(0.8);
 
                 .details {
                     opacity: 1;

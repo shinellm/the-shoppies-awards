@@ -327,11 +327,11 @@ body {
   background: radial-gradient(#525252, #131313);
 }
 
-#nominees-container .nominees-results .nominees-card {
+#nominees-container .nominees-results .nominee-card {
   margin-bottom: 2.5em;
 }
 
-#nominees-container .nominees-results .nominees-card.card {
+#nominees-container .nominees-results .nominee-card.card {
   background: none;
   border-width: 0;
   -webkit-transition: all 250ms ease-in-out;
@@ -339,34 +339,46 @@ body {
   height: 314px;
 }
 
-#nominees-container .nominees-results .nominees-card.card .cover {
+#nominees-container .nominees-results .nominee-card.card .cover {
   -webkit-transition: all 250ms ease-in-out;
   transition: all 250ms ease-in-out;
 }
 
-#nominees-container .nominees-results .nominees-card.card .cover .header {
+#nominees-container .nominees-results .nominee-card.card .cover .rank {
+  position: absolute;
+  top: 0;
+  right: 1em;
+  color: #FFFFFF;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.75);
+  padding: .5em .5em .75em;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 87%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 87%, 0 100%);
+}
+
+#nominees-container .nominees-results .nominee-card.card .cover .header {
   cursor: pointer;
 }
 
-#nominees-container .nominees-results .nominees-card.card .cover .header .nominees-image {
+#nominees-container .nominees-results .nominee-card.card .cover .header .nominee-image {
   height: 270px;
   border-radius: .25rem;
   margin-bottom: 0.5em;
 }
 
-#nominees-container .nominees-results .nominees-card.card .cover .header .nominees-title {
+#nominees-container .nominees-results .nominee-card.card .cover .header .nominee-title {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-#nominees-container .nominees-results .nominees-card.card .cover .details {
+#nominees-container .nominees-results .nominee-card.card .cover .details {
   opacity: 0;
   height: 0;
   pointer-events: none;
 }
 
-#nominees-container .nominees-results .nominees-card.card .cover .details .nominees-stats {
+#nominees-container .nominees-results .nominee-card.card .cover .details .nominee-stats {
   -webkit-columns: 2;
           columns: 2;
   -webkit-column-rule: 1px solid rgba(0, 0, 0, 0.125);
@@ -374,12 +386,12 @@ body {
   margin-bottom: 1em;
 }
 
-#nominees-container .nominees-results .nominees-card.card .cover .details .nominees-stats .nominees-text span {
+#nominees-container .nominees-results .nominee-card.card .cover .details .nominee-stats .card-text span {
   display: block;
   font-size: 0.8em;
 }
 
-#nominees-container .nominees-results .nominees-card.card:hover {
+#nominees-container .nominees-results .nominee-card.card:hover {
   background: #FFFFFF;
   text-align: center;
   border: 1px solid rgba(0, 0, 0, 0.125);
@@ -388,12 +400,12 @@ body {
   z-index: 1;
 }
 
-#nominees-container .nominees-results .nominees-card.card:hover .cover {
-  -webkit-transform: translateY(-20%) scale(0.8);
-          transform: translateY(-20%) scale(0.8);
+#nominees-container .nominees-results .nominee-card.card:hover .cover {
+  -webkit-transform: translateY(-9%) scale(0.8);
+          transform: translateY(-9%) scale(0.8);
 }
 
-#nominees-container .nominees-results .nominees-card.card:hover .cover .details {
+#nominees-container .nominees-results .nominee-card.card:hover .cover .details {
   opacity: 1;
   height: unset;
   pointer-events: unset;

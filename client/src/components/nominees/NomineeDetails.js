@@ -25,7 +25,7 @@ export default class NomineeDetails extends Component {
     }
 
     async handleSearchNomineeDetails(nominee) {
-        await axios.get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&i=${nominee.imdbID}&type=movie&plot=full&r=json`)
+        await axios.get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&i=${nominee['movie_imdbID']}&type=movie&plot=full&r=json`)
         .then(res => {
             const nomineeData = res.data;
             console.log('reponse', res);
@@ -46,6 +46,7 @@ export default class NomineeDetails extends Component {
     };
 
     render() {
+        console.log(this.state.selectedNomineeDetails.Poster, this.state.selectedNomineeDetails.Poster === 'N/A' ? '../../images/placeholder.png' : this.state.selectedNomineeDetails.Poster)
         return (
             <div className="nominee-details-container">
                 {Object.keys(this.state.selectedNomineeDetails).length === 0 ? '' :
@@ -56,7 +57,7 @@ export default class NomineeDetails extends Component {
                         <Modal.Body>
                             <Row>
                                 <Col lg={5} md={12} sm={12} xs={12}>
-                                    <img src={this.state.selectedNomineeDetails.Poster} />
+                                    <img src={this.state.selectedNomineeDetails.Poster === 'N/A' ? '../../images/placeholder.png' : this.state.selectedNomineeDetails.Poster} />
                                     <p>Country: {this.state.selectedNomineeDetails.Country}</p>
                                     <p>Languages: {this.state.selectedNomineeDetails.Language}</p>
                                     <p>Production: {this.state.selectedNomineeDetails.Production}</p>
@@ -80,7 +81,7 @@ export default class NomineeDetails extends Component {
                             </Row>
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button variant="light" onClick={() => this.onShowMovieDetails(false)}>
+                            <Button variant="light" onClick={() => this.onShowNomineeDetails(false)}>
                                 Close
                             </Button>
                         </Modal.Footer>

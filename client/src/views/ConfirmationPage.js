@@ -32,7 +32,7 @@ export default class ConfirmationPage extends Component {
                         Thanks for casting your vote and helping your favorite movies get the 
                         chance to win The Shoppies Award! While we continue to compile our list 
                         of movie nominees, feel free to check out the Nominees page and see who's
-                        in the top 10 ranking.
+                        at the top of the ranking.
                         </Card.Text>
                         <hr />
                         <div className="share-on-social">
