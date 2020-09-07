@@ -44,5 +44,9 @@
     "node": "14.7.0",
     "npm": "6.14.7"
   },
-  "author": "Shinell Manwaring (https://shinellmanwaring.com/)"
+  "author": "Shinell Manwaring (https://shinellmanwaring.com/)",
+  "bugs": {
+    "url": "https://github.com/shinellm/the-shoppies-awards/issues"
+  },
+  "homepage": "https://the-shoppies-awards.herokuapp.com/"
 }
