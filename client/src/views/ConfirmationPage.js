@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Breadcrumb, Card, Alert, Nav } from 'react-bootstrap';
-
 import { FaCheck } from "react-icons/fa";
+import SocialMeidaBtns from "../components/notification/SocialMediaBtns";
 
 export default class ConfirmationPage extends Component {
     constructor() {
@@ -39,7 +39,7 @@ export default class ConfirmationPage extends Component {
                             Share the voting link on social media so your friends can vote for their 
                             favorite movies too!
                             </Card.Text>
-                            <div className="sharable-links"></div>
+                            <SocialMeidaBtns />
                         </div>
                     </Card.Body>
                 </Card>

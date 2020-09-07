@@ -746,6 +746,14 @@ body {
   background: radial-gradient(#525252, #131313);
 }
 
+#social-media-btns-container button {
+  margin-right: 0.5em;
+}
+
+#social-media-btns-container button svg {
+  border-radius: 50%;
+}
+
 #confirmation-container {
   min-height: 100vh;
   padding: 3em;
