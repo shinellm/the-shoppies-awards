@@ -29,7 +29,7 @@ export default class MovieDetails extends Component {
     }
 
     async handleSearchMovieDetails(movie) {
-        await axios.get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&i=${movie.imdbID}&type=movie&plot=full&r=json`)
+        await axios.get(`https://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&i=${movie.imdbID}&type=movie&plot=full&r=json`)
         .then(res => {
             const movieData = res.data;
             console.log('reponse', res);
