@@ -13,7 +13,8 @@ const Nominees = database.define("nominees", {
         allowNull: false
     },
     movie_poster: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
     },
     movie_year: {
         type: Sequelize.STRING,

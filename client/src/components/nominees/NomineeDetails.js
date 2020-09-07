@@ -25,7 +25,7 @@ export default class NomineeDetails extends Component {
     }
 
     async handleSearchNomineeDetails(nominee) {
-        await axios.get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&i=${nominee['movie_imdbID']}&type=movie&plot=full&r=json`)
+        await axios.get(`https://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&i=${nominee['movie_imdbID']}&type=movie&plot=full&r=json`)
         .then(res => {
             const nomineeData = res.data;
             console.log('reponse', res);
