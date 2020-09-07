@@ -21,41 +21,41 @@ export default function SocialMediaButtons() {
         <div id="social-media-btns-container">
             <LinkedinShareButton 
                 url={"http://localhost:3000/"}
-                title={"The Shoppies - Vote for your favorite movies"}
+                title={"The Shoppies Awards  - Nominate your favorite movies"}
                 summary="">
                 <LinkedinIcon size={36} />
             </LinkedinShareButton>
             <FacebookShareButton 
                 url={"http://localhost:3000/"}
-                quote={"The Shoppies - Vote and help your favorite movies win The Shoppies Awards"}
+                quote={"The Shoppies Awards  - Nominate your favorite movies"}
                 hashtag="#theshoppiesawards">
                 <FacebookIcon size={36} />
             </FacebookShareButton>
             <TwitterShareButton 
                 url={"http://localhost:3000/"}
-                title={"The Shoppies - Vote and help your favorite movies win The Shoppies Awards"}
+                title={"The Shoppies - Nominate your favorite movies"}
                 hashtag="#theshoppiesawards">
                 <TwitterIcon size={36} />
             </TwitterShareButton>
             <RedditShareButton
                 url={"http://localhost:3000/"}
-                title={"The Shoppies - Vote and help your favorite movies win The Shoppies Awards"}>
+                title={"The Shoppies - Nominate your favorite movies"}>
                 <RedditIcon size={36} />
             </RedditShareButton>
             <TumblrShareButton
                 url={"http://localhost:3000/"}
-                title={"The Shoppies - Vote and help your favorite movies win The Shoppies Awards"}
+                title={"The Shoppies - Nominate your favorite movies"}
                 caption="">
                 <TumblrIcon size={36} />
             </TumblrShareButton>
             <PinterestShareButton
                 url={"http://localhost:3000/"}
-                description={"The Shoppies - Vote and help your favorite movies win The Shoppies Awards"}>
+                description={"The Shoppies - Nominate your favorite movies"}>
                 <PinterestIcon size={36} />
             </PinterestShareButton>
             <WhatsappShareButton 
                 url={"http://localhost:3000/"}
-                title={"The Shoppies - Vote and help your favorite movies win The Shoppies Awards"}
+                title={"The Shoppies - Nominate your favorite movies"}
                 separator=":: ">
                 <WhatsappIcon size={36} />
             </WhatsappShareButton>
