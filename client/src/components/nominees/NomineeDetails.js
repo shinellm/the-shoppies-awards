@@ -56,7 +56,7 @@ export default class NomineeDetails extends Component {
                         <Modal.Body>
                             <Row>
                                 <Col lg={5} md={12} sm={12} xs={12}>
-                                    <img src={this.state.selectedNomineeDetails.Poster === 'N/A' ? '../../images/placeholder.png' : this.state.selectedNomineeDetails.Poster} />
+                                    <img alt={this.selectedNominee.Title} src={this.state.selectedNomineeDetails.Poster === 'N/A' ? '../../images/placeholder.png' : this.state.selectedNomineeDetails.Poster} />
                                     <p>Country: {this.state.selectedNomineeDetails.Country}</p>
                                     <p>Languages: {this.state.selectedNomineeDetails.Language}</p>
                                     <p>Production: {this.state.selectedNomineeDetails.Production}</p>

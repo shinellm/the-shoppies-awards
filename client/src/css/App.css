@@ -54,6 +54,30 @@ footer .navbar .navbar-brand .copyright .contributor .heart {
   color: #db2721;
 }
 
+.notFound {
+  min-height: 100vh;
+  padding: 3em 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.notFound p {
+  font-size: calc(10px + 2vmin);
+}
+
+.notFound img {
+  border-radius: 20%;
+  width: calc(80vmin);
+}
+
 #root #scroll-btn {
   position: fixed;
   bottom: 0px;

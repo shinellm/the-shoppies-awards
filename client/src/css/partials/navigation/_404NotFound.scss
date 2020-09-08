@@ -1,0 +1,16 @@
+.notFound {
+  min-height: 100vh;
+  padding: 3em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    font-size: calc(10px + 2vmin);
+  }
+
+  img {
+    border-radius: 20%;
+    width: calc(80vmin);
+  }
+}

@@ -12,7 +12,7 @@ export default class Hero extends Component {
                     <div className="circle-one"></div>
                     <div className="circle-two"></div>
                     <div className="filter"></div>
-                    <img className="hero-image" src={'../../images/theather.jpg'}/>
+                    <img className="hero-image" alt="theater" src={'../../images/theater.jpg'}/>
                 </div>
             </div>
         )
