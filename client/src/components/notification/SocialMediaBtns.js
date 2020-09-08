@@ -48,7 +48,7 @@ export default function SocialMediaButtons() {
             </TumblrShareButton>
             <PinterestShareButton
                 url={"https://the-shoppies-awards.herokuapp.com"}
-                media={"https://i.imgur.com/7rTrLC9.png"}
+                media={"https://i.imgur.com/RmUEep3.jpg"}
                 description={"The Shoppies Awards - Nominate your favorite movies"}>
                 <PinterestIcon size={36} />
             </PinterestShareButton>
