@@ -190,7 +190,7 @@ export default class Movies extends Component {
                     })}
                   </Row>
                   {this.state.totalResults === this.state.movies.length ? '' :
-                    <Row className="justify-content-md-center">
+                    <Row className="load-more-btn">
                       <Button className="load-more" variant="primary" onClick={this.loadMoreMovies}>Load More Movies</Button>
                     </Row>
                   }

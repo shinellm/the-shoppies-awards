@@ -64,8 +64,12 @@
             }
         }
 
-        .row .load-more {
-            margin: 1em 0 3em 0;
+        .load-more-btn {
+            justify-content: center;
+            
+            .load-more {
+                margin: 1em 0 3em 0;
+            }
         }
     }
 }    
