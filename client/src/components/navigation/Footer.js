@@ -1,7 +1,6 @@
 import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
-// import logo from '../../images/svg/reactlogo.svg';
-import logo from '../../images/svg/logo.svg';
+import { Navbar } from 'react-bootstrap';
+// import logo from '../../images/svg/logo.svg';
 
 function Footer() {
     return (
@@ -9,7 +8,10 @@ function Footer() {
             <Navbar bg="light" variant="light">
                 <span className="navbar-brand" href="/">
                     {/* <img className='logo' src={logo} alt="logo"/> */}
-                    <span className='logo-text'>&copy; 2020 Shinell<b>Manwaring</b></span>
+                    <span className="copyright">
+                        <span className='logo-text'>&copy; 2020 The<b>Shoppies</b></span>
+                        <span className="contributor">Coded by<span className="heart"> ❤ </span>Shinell Manwaring</span>
+                    </span>
                 </span>
             </Navbar>
         </footer>
