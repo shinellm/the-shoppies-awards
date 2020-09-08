@@ -10,7 +10,7 @@ GET request: Returns all of the nominees stored in the database
 */
 router.get('/nominees', async (req, res, next) => {
   try {
-    const allNominees = await Nominees.findAll({ order: [['movie_votes', 'DESC']] });
+    const allNominees = await Nominees.findAll({ order: [['movie_votes', 'DESC'],['movie_title', 'ASC']] });
     res.json(allNominees);
   } catch(error) {
     console.log("backend error while GETting the list of nominees", error);
