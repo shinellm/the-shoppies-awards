@@ -29,6 +29,7 @@ Additional features that I added:
 * Created a simple landing page to give users some information about the site and instructions on how to use it
 * Emulated the [Popdog Beta](https://popdog.com/games) game card hover effect
 * Users can trigger a modal that displays movie details just by clicking on a movie title's image
+* A load more button, which loads in more movies that fit the movie title a user has searched for
 * Integrated notifications, which popup in the bottom right hand corner when the user has added/removed a movie from their nominations list
 * Added a confirmation page, which the user is navigated to after successfully submitting their list of 5 movie nominations
 * Added an error page, which appears if a user's list of 5 movie nominations was not successfully submitted
@@ -36,7 +37,8 @@ Additional features that I added:
 * Created a nominees page to display all of the movies that have been nominated so far and how many nominations each has received
 * Highlighted the nominated movies which rank in the top 3 for most nominations
 * Integrated the ability to quickly create/share posts about the site on social media
-* Added various animations and styling (the website is not currently mobile ready, but is desktop ready)
+* Created scroll button to quickly navigate to the top of the page
+* Added various usability enhancements, animations, and styling (the website is not currently mobile ready, but is desktop ready)
 
 ## Web Demo
 
