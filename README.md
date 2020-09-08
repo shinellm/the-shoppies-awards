@@ -1,8 +1,10 @@
 # the-shoppies-awards
 
+### If you want to see the project in action, [visit the delpoyed project on Heroku](https://the-shoppies-awards.herokuapp.com/)!
+
 This project is my submission for the UX Developer Intern & Web Developer Intern Challenge created by [Shopify](https://www.shopify.com/careers/developer-internships-data-science-internships-winter-2021-826aeb). The project was built using my [boilerplate-cra-nodejs](https://github.com/shinellm/boilerplate-cra-nodejs) project, which has a [React](https://github.com/facebook/create-react-app) frontend and a custom Node backend (server for API, proxy, & routing).
 
-In this project you are presented with a webpage that can search OMDB for movies. It allows users to save their favorite films they feel should be up for nomination in The Shoppies: Movie awards for entrepreneurs. If you want to see the project in action, [visit the delpoyed project](https://the-shoppies-awards.herokuapp.com/).
+In this project you are presented with a webpage that can search OMDB for movies. It allows users to save their favorite films they feel should be up for nomination in The Shoppies: Movie awards for entrepreneurs.
 
 * ✨ [Project Features](#user-content-project-features)
 * 👾 [Web Demo](#user-content-web-demo)
