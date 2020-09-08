@@ -77,6 +77,7 @@ export default class Movies extends Component {
     }
 
     async handleSearchMovie(searchValue, page) {
+      console.log(process.env.REACT_APP_API_KEY);
       await axios.get(`https://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&s=${searchValue}&type=movie&page=${page}&r=json`)
       .then(res => {
         const movieData = res.data;
