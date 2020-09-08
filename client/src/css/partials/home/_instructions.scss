@@ -1,0 +1,76 @@
+section#instructions {
+    width: 100vw;
+    min-height: 75vh;
+    margin-bottom: 2em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .instructions-container {
+        padding: 2em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column;
+
+        .instructions-header {
+            color:#FFFFFF;
+            font-size: calc(1rem + 2.5vmin);
+        }
+        .row {
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+
+            .instruction-column {
+                padding: 2em 1em;
+
+                .instruction-card {
+                    height: 15em;
+                    width: 100%;
+                    border: 0;
+                    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
+    
+                    .card-body {
+                        display: flex;
+                        align-items: center;
+                        flex-flow: column;
+    
+                        .instruction-icon {
+                            width: 80px;
+                            height: 50px;
+                            position: relative;
+                            display: flex;
+                            justify-content: center;
+                            margin-bottom: 1em;
+    
+                            svg {
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: scale(1.2) translate(-50%, -50%);
+                                z-index: 1;
+                            }
+                            .icon-background {
+                                width: 100%;
+                                height: 100%;
+                                background: lighten(#e44d26, 25%);
+                                clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+                            }
+                        }
+                        .card-title {
+                            color: #e44d26;
+                            margin-bottom: .5em;
+                            font-size: calc(1rem + 1vmin);
+                        }
+                        .card-text {
+                            font-size: calc(1rem + 0.2vmin);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

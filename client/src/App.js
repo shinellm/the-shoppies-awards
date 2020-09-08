@@ -5,7 +5,6 @@ import Header from './components/navigation/Header';
 import Footer from './components/navigation/Footer';
 import ScrollButton from './components/navigation/ScrollBtn';
 
-import HelmetMetaData from './components/notification/HelmetMetaData';
 import Home from './views/Home';
 import Vote from './views/Vote';
 import Nominees from './views/Nominees';
@@ -17,8 +16,6 @@ class App extends Component {
   render() {
     return (
     <Router>
-      {/* <HelmetMetaData /> */}
-
       <Header />
 
       <Switch>

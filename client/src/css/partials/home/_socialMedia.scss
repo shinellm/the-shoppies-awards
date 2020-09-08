@@ -1,0 +1,38 @@
+section#social-media {
+    width: 100vw;
+    height: 50vh;
+    padding: 3em 0;
+    margin-bottom: 4em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: darken(#e44d26, 15%);
+    clip-path: polygon(0 10%, 100% 0, 100% 90%, 0% 100%);
+
+    .social-media-container {
+        height: 97%;
+        width: 100%;
+        padding: 2em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column;
+        background: #e44d26;
+        box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5);
+
+        .social-media {
+            max-width: 1000px;
+            
+            .social-media-header {
+                color: #FFFFFF;
+                margin-bottom: 1em;
+                font-size: calc(1rem + 1.75vmin);
+            }
+            .social-media-btns-container button {
+                margin-right: 2em;
+                filter: drop-shadow(2px 3px 1px rgba(0, 0, 0, 0.5));
+            }
+        }
+    }
+}

@@ -1,0 +1,83 @@
+section#hero {
+    height: 100vh;
+    width: 100vw;
+    margin-bottom: 2em;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+
+    .hero-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-flow: row;
+        height: 100%;
+
+        .hero-header {
+            width: 50%;
+            max-width: 1000px;
+            position: absolute;
+            color: #FFFFFF;
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            z-index: 1;
+
+            h1 {
+                // font-size: 1.5rem;
+                font-size: calc(1rem + 5vmin);
+            }
+
+            p {
+                // font-size: 1.5rem;
+                font-size: calc(1rem + 1.25vmin);
+                font-weight: 300;
+            }
+        }
+
+        .hero-background {
+            height: 100%;
+            position: relative;
+
+            .circle-one {
+                position: absolute;
+                width: calc(12rem + 10vw);
+                height: calc(12rem + 10vw);
+                max-width: 300px;
+                max-height: 300px;
+                background: #f5cb35; 
+                opacity: 0.3; 
+                left: 50%; 
+                bottom: 0; 
+                transform: translate(15%, -20%);
+                border-radius: 50%;
+            }
+            .circle-two {
+                position: absolute; 
+                width: calc(30rem + 10vw);
+                height: calc(30rem + 10vw);
+                max-width: 600px;
+                max-height: 600px;
+                background: #F7772E; 
+                opacity: 0.3; 
+                left: 50%; 
+                top: 50%; 
+                transform: translate(-50%, -50%); 
+                border-radius: 50%;
+            }
+            .filter {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background: rgb(0, 0, 0);
+                opacity: 0.3;
+            }
+            .hero-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}

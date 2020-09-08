@@ -1,0 +1,13 @@
+@import "hero";
+@import "intro";
+@import "instructions";
+@import "socialMedia";
+
+#home-container {
+    background: radial-gradient(#525252, #131313);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
