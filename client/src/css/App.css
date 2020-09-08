@@ -1,11 +1,15 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 html,
 body {
   width: 100vw;
 }
 
-* {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+#root {
+  overflow: hidden;
 }
 
 footer .navbar .logo {
@@ -388,7 +392,7 @@ section#hero .hero-container .hero-background .hero-image {
 
 section#intro {
   width: 100vw;
-  height: 70vh;
+  height: 100%;
   padding: 3em 0;
   margin-bottom: 2em;
   text-align: center;
@@ -558,7 +562,7 @@ section#instructions .instructions-container .row .instruction-column .instructi
 
 section#social-media {
   width: 100vw;
-  height: 50vh;
+  height: 100%;
   padding: 3em 0;
   margin-bottom: 4em;
   text-align: center;
@@ -608,10 +612,29 @@ section#social-media .social-media-container .social-media .social-media-header 
   font-size: calc(1rem + 1.75vmin);
 }
 
+section#social-media .social-media-container .social-media .social-media-btns-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 section#social-media .social-media-container .social-media .social-media-btns-container button {
   margin-right: 2em;
+  margin-bottom: 1em;
   -webkit-filter: drop-shadow(2px 3px 1px rgba(0, 0, 0, 0.5));
           filter: drop-shadow(2px 3px 1px rgba(0, 0, 0, 0.5));
+}
+
+section#social-media .social-media-container .social-media .social-media-btns-container button:hover {
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
 }
 
 #home-container {
@@ -967,11 +990,17 @@ section#social-media .social-media-container .social-media .social-media-btns-co
 }
 
 .social-media-btns-container button {
-  margin-right: 0.5em;
+  margin-right: 1em;
+  margin-bottom: 1em;
 }
 
 .social-media-btns-container button svg {
   border-radius: 50%;
+}
+
+.social-media-btns-container button:hover {
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
 }
 
 #confirmation-container {

@@ -1,12 +1,16 @@
 @import "../modules/all";
 
+* {
+    box-sizing: border-box;
+}
+
 html,
 body {
   width: 100vw;
 }
 
-* {
-    box-sizing: border-box;
+#root {
+  overflow: hidden;
 }
 
 // .App {

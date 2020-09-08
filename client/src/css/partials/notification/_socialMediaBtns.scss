@@ -1,9 +1,13 @@
 .social-media-btns-container {
     button {
-        margin-right: 0.5em;
+        margin-right: 1em;
+        margin-bottom: 1em;
         
         svg {
             border-radius: 50%;
         }
+    }
+    button:hover {
+        transform: scale(1.25);
     }
 }
