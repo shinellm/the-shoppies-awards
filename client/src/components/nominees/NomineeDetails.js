@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Row, Col, Button, Modal } from 'react-bootstrap';
 import axios from "axios";
 
+import { ReactComponent as Imdb } from "../../images/svg/imdbLogo.svg";
+import { ReactComponent as Tomato } from "../../images/svg/rottenTomatoesLogo.svg";
+import { ReactComponent as Metacritic } from "../../images/svg/metacriticLogo.svg";
+
 export default class NomineeDetails extends Component {
     constructor(props) {
         super(props);
@@ -13,6 +17,7 @@ export default class NomineeDetails extends Component {
 
         this.onShowNomineeDetails = this.onShowNomineeDetails.bind(this);
         this.handleSearchNomineeDetails = this.handleSearchNomineeDetails.bind(this);
+        this.setRatingIcon = this.setRatingIcon.bind(this);
     }
 
     onShowNomineeDetails(value) {
@@ -45,37 +50,52 @@ export default class NomineeDetails extends Component {
         })
     };
 
+    setRatingIcon(source) {
+        console.log(source)
+        switch (source) {
+            case 'Metacritic':
+                return <Metacritic />;
+            case 'Rotten Tomatoes':
+                return <Tomato />;
+            default:
+                return <Imdb />;
+        }
+    }
+
     render() {
         return (
             <div className="nominee-details-container">
                 {Object.keys(this.state.selectedNomineeDetails).length === 0 ? '' :
-                    <Modal size="lg" aria-labelledby="nominee-details-title" centered show={this.state.showNomineeDetails} onHide={() => this.onShowNomineeDetails(false)}>
+                    <Modal size="lg" className="nominee-details-modal" aria-labelledby="nominee-details-title" centered show={this.state.showNomineeDetails} onHide={() => this.onShowNomineeDetails(false)}>
                         <Modal.Header closeButton>
-                            <Modal.Title id="nominee-details-title">{this.state.selectedNomineeDetails.Title}</Modal.Title>
+                            <Modal.Title id="nominee-details-title">{this.state.selectedNomineeDetails.Title} -- [{this.state.selectedNominee.movie_votes} nominations]</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             <Row>
-                                <Col lg={5} md={12} sm={12} xs={12}>
-                                    <img alt={this.state.selectedNominee.Title} src={this.state.selectedNomineeDetails.Poster === 'N/A' ? '../../images/placeholder.png' : this.state.selectedNomineeDetails.Poster} />
-                                    <p>Country: {this.state.selectedNomineeDetails.Country}</p>
-                                    <p>Languages: {this.state.selectedNomineeDetails.Language}</p>
-                                    <p>Production: {this.state.selectedNomineeDetails.Production}</p>
-                                    <p>Box Office: {this.state.selectedNomineeDetails.BoxOffice}</p>
-                                    <p>Released: {this.state.selectedNomineeDetails.Released}</p>
-                                    <p>Rated: {this.state.selectedNomineeDetails.Rated}</p>
-                                    <p>Duration: {this.state.selectedNomineeDetails.Runtime}</p>
+                                <Col className="column1" lg={5} md={12} sm={12} xs={12}>
+                                    <img alt={this.state.selectedNominee.Title} src={this.state.selectedNomineeDetails.Poster === 'N/A' ? '../../images/placeholder.png' : this.state.selectedNomineeDetails.Poster} />   
                                 </Col>
-                                <Col lg={7} md={12} sm={12} xs={12}>
+                                <Col className="column2" lg={7} md={12} sm={12} xs={12}>
+                                    <div className="nominee-details-header"><b>
+                                        <span>{this.state.selectedNomineeDetails.Runtime}</span>
+                                        <span>{this.state.selectedNomineeDetails.Rated}</span>
+                                        {this.state.selectedNomineeDetails.Ratings.map( rating => {
+                                            return <span key={`${rating.Source}-${this.state.selectedNomineeDetails.imdbID}`}>
+                                                {this.setRatingIcon(rating.Source)}{rating.Value}
+                                                </span>
+                                        })}
+                                    </b></div>
+                                    <p><b>Genre: </b>{this.state.selectedNomineeDetails.Genre}</p>
                                     <p>{this.state.selectedNomineeDetails.Plot}</p>
-                                    <p>Genre: {this.state.selectedNomineeDetails.Genre}</p>
-                                    <p>Director: {this.state.selectedNomineeDetails.Director}</p>
-                                    <p>Writers: {this.state.selectedNomineeDetails.Writer}</p>
-                                    <p>Actors: {this.state.selectedNomineeDetails.Actors}</p>
-                                    <p>Awards: {this.state.selectedNomineeDetails.Awards}</p>
-                                    <ul style={{listStyle: "none", padding: "0"}}>Ratings: {this.state.selectedNomineeDetails.Ratings.map( rating => {
-                                        return <li key={`${rating.Source}-${this.state.selectedNomineeDetails.imdbID}`} style={{paddingLeft: "40px"}}>{rating.Source} {rating.Value}</li>
-                                    })}
-                                    </ul>
+                                    <p><b>Director: </b>{this.state.selectedNomineeDetails.Director}</p>
+                                    <p><b>Writers: </b>{this.state.selectedNomineeDetails.Writer}</p>
+                                    <p><b>Actors: </b>{this.state.selectedNomineeDetails.Actors}</p>
+                                    <p><b>Awards: </b>{this.state.selectedNomineeDetails.Awards}</p>
+                                    <p><b>Production: </b>{this.state.selectedNomineeDetails.Production}</p>
+                                    <p><b>Country: </b>{this.state.selectedNomineeDetails.Country}</p>
+                                    <p><b>Languages: </b>{this.state.selectedNomineeDetails.Language}</p>
+                                    <p><b>Box Office: </b>{this.state.selectedNomineeDetails.BoxOffice}</p>
+                                    <p><b>Released: </b>{this.state.selectedNomineeDetails.Released}</p>
                                 </Col>
                             </Row>
                         </Modal.Body>

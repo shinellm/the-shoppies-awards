@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Row, Col, Button, Modal } from 'react-bootstrap';
 import axios from "axios";
 
+import { ReactComponent as Imdb } from "../../images/svg/imdbLogo.svg";
+import { ReactComponent as Tomato } from "../../images/svg/rottenTomatoesLogo.svg";
+import { ReactComponent as Metacritic } from "../../images/svg/metacriticLogo.svg";
+
 export default class MovieDetails extends Component {
     constructor(props) {
         super(props);
@@ -17,6 +21,7 @@ export default class MovieDetails extends Component {
         this.onShowMovieDetails = this.onShowMovieDetails.bind(this);
         this.handleSearchMovieDetails = this.handleSearchMovieDetails.bind(this);
         this.setMovieCardButton = this.setMovieCardButton.bind(this);
+        this.setRatingIcon = this.setRatingIcon.bind(this);
     }
 
     onShowMovieDetails(value) {
@@ -57,37 +62,52 @@ export default class MovieDetails extends Component {
         return false;
     }
 
+    setRatingIcon(source) {
+        console.log(source)
+        switch (source) {
+            case 'Metacritic':
+                return <Metacritic />;
+            case 'Rotten Tomatoes':
+                return <Tomato />;
+            default:
+                return <Imdb />;
+        }
+    }
+
     render() {
         return (
             <div className="movie-details-container">
                 {Object.keys(this.state.selectedMovieDetails).length === 0 ? '' :
-                    <Modal size="lg" aria-labelledby="movie-details-title" centered show={this.state.showMovieDetails} onHide={() => this.onShowMovieDetails(false)}>
+                    <Modal size="lg" className="movie-details-modal" aria-labelledby="movie-details-title" centered show={this.state.showMovieDetails} onHide={() => this.onShowMovieDetails(false)}>
                         <Modal.Header closeButton>
                             <Modal.Title id="movie-details-title">{this.state.selectedMovieDetails.Title}</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             <Row>
-                                <Col lg={5} md={12} sm={12} xs={12}>
+                                <Col className="column1" lg={5} md={12} sm={12} xs={12}>
                                     <img alt={this.state.selectedMovie.Title} src={this.state.selectedMovieDetails.Poster === 'N/A' ? '../../images/placeholder.png' : this.state.selectedMovieDetails.Poster} />
-                                    <p>Country: {this.state.selectedMovieDetails.Country}</p>
-                                    <p>Languages: {this.state.selectedMovieDetails.Language}</p>
-                                    <p>Production: {this.state.selectedMovieDetails.Production}</p>
-                                    <p>Box Office: {this.state.selectedMovieDetails.BoxOffice}</p>
-                                    <p>Released: {this.state.selectedMovieDetails.Released}</p>
-                                    <p>Rated: {this.state.selectedMovieDetails.Rated}</p>
-                                    <p>Duration: {this.state.selectedMovieDetails.Runtime}</p>
                                 </Col>
-                                <Col lg={7} md={12} sm={12} xs={12}>
+                                <Col className="column2" lg={7} md={12} sm={12} xs={12}>
+                                    <div className="movie-details-header"><b>
+                                        <span>{this.state.selectedMovieDetails.Runtime}</span>
+                                        <span>{this.state.selectedMovieDetails.Rated}</span>
+                                        {this.state.selectedMovieDetails.Ratings.map( rating => {
+                                            return <span key={`${rating.Source}-${this.state.selectedMovieDetails.imdbID}`}>
+                                                {this.setRatingIcon(rating.Source)}{rating.Value}
+                                                </span>
+                                        })}
+                                    </b></div>
+                                    <p><b>Genre: </b>{this.state.selectedMovieDetails.Genre}</p>
                                     <p>{this.state.selectedMovieDetails.Plot}</p>
-                                    <p>Genre: {this.state.selectedMovieDetails.Genre}</p>
-                                    <p>Director: {this.state.selectedMovieDetails.Director}</p>
-                                    <p>Writers: {this.state.selectedMovieDetails.Writer}</p>
-                                    <p>Actors: {this.state.selectedMovieDetails.Actors}</p>
-                                    <p>Awards: {this.state.selectedMovieDetails.Awards}</p>
-                                    <ul style={{listStyle: "none", padding: "0"}}>Ratings: {this.state.selectedMovieDetails.Ratings.map( rating => {
-                                        return <li key={`${rating.Source}-${this.state.selectedMovieDetails.imdbID}`} style={{paddingLeft: "40px"}}>{rating.Source} {rating.Value}</li>
-                                    })}
-                                    </ul>
+                                    <p><b>Director: </b>{this.state.selectedMovieDetails.Director}</p>
+                                    <p><b>Writers: </b>{this.state.selectedMovieDetails.Writer}</p>
+                                    <p><b>Actors: </b>{this.state.selectedMovieDetails.Actors}</p>
+                                    <p><b>Awards: </b>{this.state.selectedMovieDetails.Awards}</p>
+                                    <p><b>Production: </b>{this.state.selectedMovieDetails.Production}</p>
+                                    <p><b>Country: </b>{this.state.selectedMovieDetails.Country}</p>
+                                    <p><b>Languages: </b>{this.state.selectedMovieDetails.Language}</p>
+                                    <p><b>Box Office: </b>{this.state.selectedMovieDetails.BoxOffice}</p>
+                                    <p><b>Released: </b>{this.state.selectedMovieDetails.Released}</p>
                                 </Col>
                             </Row>
                         </Modal.Body>

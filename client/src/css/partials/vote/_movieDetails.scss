@@ -1,0 +1,42 @@
+.movie-details-modal .modal-dialog .modal-content{
+    // .modal-header .movie-details-title {
+        
+    // }
+
+    .modal-body .row {
+        .column1 {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+
+            img {
+                margin-bottom: 1rem;
+                object-fit: contain;
+            }
+        }
+        .column2 {
+            .movie-details-header {
+                margin-bottom: 1rem;
+                
+                span {
+                    border-right: 1px solid rgba(0, 0, 0, 0.125);
+                    padding: 0 .5em;
+
+                    svg {
+                        width: auto;
+                        height: 18px;
+                        margin-right: 0.25em;
+                    }
+                }
+            }
+            .movie-details-header span:first-child {
+                border-right: 1px solid rgba(0, 0, 0, 0.125);
+                padding-left: 0;
+            }
+            .movie-details-header span:last-child {
+                border: 0;
+                padding-right: 0;
+            }
+        }
+    }
+}
