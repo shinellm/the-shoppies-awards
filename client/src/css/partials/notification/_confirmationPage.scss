@@ -25,10 +25,13 @@
             .alert-heading {
                 margin: 0;
                 line-height: unset;
+                font-size: calc(1rem + 1vmin);
             }
         }
 
         .card-text {
+            font-size: calc(1rem + 0.2vmin);
+
             a {
                 display: inline;
                 padding: 0;

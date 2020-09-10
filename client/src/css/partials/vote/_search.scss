@@ -1,12 +1,23 @@
 .search-container .search-movies {
     margin-bottom: 1rem;
 
-    hr {
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-    }
+    .card-body {
 
-    form .form-group .form-label {
-        margin-bottom: .75rem;
+        .card-title {
+            font-size: calc(1rem + 1vmin);
+        }
+        p {
+            font-size: calc(1rem + 0.2vmin);
+        }
+
+        hr {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        form .form-group .form-label {
+            margin-bottom: .75rem;
+            font-size: calc(1rem + 1vmin);
+        }
     }
 }
