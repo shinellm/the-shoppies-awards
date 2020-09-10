@@ -46,7 +46,7 @@ Additional features that I added:
 
 A small demo of the website is shown below:
 
-![React App Demo](https://i.imgur.com/pPlO2B9.gif "The Shoppies Awards Web Demo")
+![React App Demo](https://i.imgur.com/AP53NFQ.gif "The Shoppies Awards Web Demo")
 
 ## File Layout
 
