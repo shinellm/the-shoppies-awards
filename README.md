@@ -11,7 +11,7 @@ In this project you are presented with a webpage that can search OMDB for movies
 * 🗂 [File Layout](#user-content-file-layout)
 * 💻 [Local Development](#user-content-local-development)
 
-## Project features
+## Project Features
 The minimal requirement for this project were to create a user interface that does the following:
 * The webpage searches OMDB and displays movies only
 * Users can add a movie from the search results to their nomination list
