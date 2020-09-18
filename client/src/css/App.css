@@ -8,10 +8,6 @@ body {
   width: 100vw;
 }
 
-#root {
-  overflow: hidden;
-}
-
 footer .navbar .logo {
   padding: 0 !important;
   margin-right: 0.5em !important;
@@ -630,6 +626,7 @@ section#social-media .social-media-container .social-media .social-media-btns-co
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  overflow: hidden;
 }
 
 .search-container .search-movies {
