@@ -11,9 +11,7 @@ const database = new Sequelize(
     {
       logging: (...msg) => console.log(msg),
       dialectOptions: {
-        ssl: {
-            rejectUnauthorized: false
-        }
+        ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false
       }
     }
   )
