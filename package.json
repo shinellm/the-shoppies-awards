@@ -12,7 +12,7 @@
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "dependencies": {
-    "chalk": "^4.1.0",
+    "chalk": "^5.2.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "debug": "^2.6.9",
