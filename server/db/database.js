@@ -1,8 +1,9 @@
 const { Sequelize } = require('sequelize');
 const pkg = require('../../package.json');
-const chalk = require('chalk');
+// const chalk = require('chalk');
 
-console.log(chalk.yellow("Opening database connection"));
+// console.log(chalk.yellow('Opening database connection'));
+console.log('Opening database connection');
 
 const databaseName = pkg.name + (process.env.NODE_ENV === 'test' ? '-test' : '')
 
