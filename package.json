@@ -1,6 +1,6 @@
 {
   "name": "the-shoppies-awards",
-  "description": "A webpage that can search OMDB for movies, and allows users to save their favorite films they feel should be up for nomination",
+  "description": "A webpage that can search OMDB for movies, and allows users to nominate their favorite films for the shoppies awards",
   "version": "0.0.0",
   "private": true,
   "scripts": {
